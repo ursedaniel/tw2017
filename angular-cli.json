@@ -18,7 +18,9 @@
       "tsconfig": "tsconfig.json",
       "prefix": "acar",
       "styles": [
-        "styles.css"
+        "css/bootstrap.css",
+        "css/animate.css",
+        "css/style.css"
       ],
       "scripts": [],
       "environments": {

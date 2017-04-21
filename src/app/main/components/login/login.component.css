@@ -1,0 +1,44 @@
+
+h1 {
+    font-size: 30px;
+}
+
+.footer-text-white{
+    color: white;
+    font-style: italic;
+}
+.footer-text-black {
+    color: black;
+    font-weight: bold;
+}
+
+.login-box {
+    background-color: #848688;
+    width: 550px !important;
+    max-width: 550px;
+}
+
+.login-content {
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    text-align: center;
+}
+
+.login-logo {
+    width: 20%;
+}
+
+.login-title {
+    color: black;
+}
+
+
+.login-bg {
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.child {
+margin-top:100px;
+}
