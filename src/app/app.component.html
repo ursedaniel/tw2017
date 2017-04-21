@@ -3,6 +3,7 @@
         <acar-login (pageChanged)="loggedIn()"></acar-login>
     </div>
     <div [hidden]="!logged">
-    <router-outlet></router-outlet>
+        <acar-sidebar></acar-sidebar>
+        <router-outlet></router-outlet>
     </div>
 </div>

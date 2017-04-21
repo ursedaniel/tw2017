@@ -7,14 +7,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './main/components/login/login.component';
 import {routing} from "./config/routes";
 import { HomeComponent } from './main/components/home/home.component';
-import { SidebarComponent } from './app/common/components/sidebar/sidebar.component';
+import { SidebarComponent } from './common/components/sidebar/sidebar.component';
+import { CoursesComponent } from './main/components/courses/courses.component';
+import { HeaderComponent } from './common/components/sidebar/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    CoursesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
