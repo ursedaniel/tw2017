@@ -5,9 +5,10 @@
 .boxes-orange {
   text-align:center;
   height: 150px;
-  background-color: #f0c24b;
+  background-color: #F79835;
   margin-bottom:60px;
-  border-right:10px white solid;
+  border-right:5px white solid;
+  border-left:5px white solid;
   padding-top: 60px;
   color: black;
 }
@@ -17,7 +18,8 @@
   height: 150px;
   background-color: #2f4050;
   margin-bottom:60px;
-  border-right:10px white solid;
+  border-right:5px white solid;
+  border-left:5px white solid;
   padding-top: 60px;
   color:white;
 }
@@ -35,7 +37,7 @@
   display: block;
   position: absolute;
   left:27%;
-  border-color: #f0c24b;
+  border-color: #F79835;
   color: black;
 }
 

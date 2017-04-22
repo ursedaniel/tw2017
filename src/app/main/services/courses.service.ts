@@ -13,6 +13,7 @@ export class CoursesService {
   private search: URLSearchParams;
 
   private urlCourse = "/api/courses/";
+  private urlSearch = "/api/courses/search?name=";
 
   constructor(private http: Http) {
     this.http = http;
@@ -20,5 +21,9 @@ export class CoursesService {
 
   getCourses(): Observable<JsonObject> {
     return this.http.get(this.urlCourse).map((response: Response) => <JsonObject>response.json());
+  }
+
+  getFilteredCourses(value): Observable<JsonObject> {
+    return this.http.get(this.urlSearch + value).map((response: Response) => <JsonObject>response.json());
   }
 }
