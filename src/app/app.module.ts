@@ -10,6 +10,7 @@ import { HomeComponent } from './main/components/home/home.component';
 import { SidebarComponent } from './common/components/sidebar/sidebar.component';
 import { CoursesComponent } from './main/components/courses/courses.component';
 import { HeaderComponent } from './common/components/sidebar/header/header.component';
+import {CoursesService} from "./main/services/courses.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { HeaderComponent } from './common/components/sidebar/header/header.compo
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [
+    CoursesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

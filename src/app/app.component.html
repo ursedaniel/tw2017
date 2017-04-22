@@ -1,9 +1,10 @@
 <div id="wrapper">
-    <div *ngIf="!logged">
-        <acar-login (pageChanged)="loggedIn()"></acar-login>
-    </div>
-    <div [hidden]="!logged">
-        <acar-sidebar></acar-sidebar>
-        <router-outlet></router-outlet>
-    </div>
+  <!--<div *ngIf="!logged">-->
+  <!--<acar-login (pageChanged)="loggedIn()"></acar-login>-->
+  <!--</div>-->
+  <!--<div [hidden]="!logged">-->
+  <div>
+    <acar-sidebar></acar-sidebar>
+    <router-outlet></router-outlet>
+  </div>
 </div>
