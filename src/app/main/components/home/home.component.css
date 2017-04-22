@@ -1,0 +1,132 @@
+.home-page {
+  background-color: #84bed6 !important;
+  width: 100%;
+  background-repeat: repeat;
+  padding-bottom: 60px;
+  background-image: url("../../../../assets/pattern-light.png") !important;
+  height: 100vh;
+}
+
+.aligned-text {
+  text-align:center;
+}
+
+.shape-orange-right {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 0;
+  position: relative;
+  float: none;
+  background-color: #F79835;
+  text-align:center;
+}
+
+.shape-orange-right::before {
+  content: "";
+  width: 55px;
+  top: 11px;
+  background-color: #F79835;
+  left:3px;
+  height: 2px;
+  display: inline-block;
+  position: absolute;
+  border-radius: 2px;
+}
+
+.shape-orange-right::after {
+  content: "";
+  left:3px;
+  width: 70px;
+  top: 6px;
+  background-color: #F79835;
+  height: 3px;
+  display: inline-block;
+  position: absolute;
+  border-radius: 2px;
+}
+
+.shape-orange-left {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #F79835;
+  display: inline-block;
+  padding: 0;
+  position: relative;
+  float: none;
+}
+
+.shape-orange-left::before {
+  content: "";
+  right:3px;
+  width: 55px;
+  top: 11px;
+  height: 2px;
+  background-color: #F79835;
+  display: inline-block;
+  position: absolute;
+  border-radius: 2px;
+}
+
+.shape-orange-left::after {
+  right:3px;
+  width: 70px;
+  top: 6px;
+  content: "";
+  height: 3px;
+  background-color: #F79835;
+  display: inline-block;
+  position: absolute;
+  border-radius: 2px;
+}
+
+.highlight {
+  color:white;
+  font-weight:600;
+  font-size:30px;
+}
+
+.home-image{
+  width:88%;
+}
+
+.home {
+  padding: 0 !important;
+  height: 100vh;
+}
+
+.home-i i {
+  color: #ffffff;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 100%;
+  font-size:40px;
+}
+
+.home-i:hover i{
+  transform: rotate(360deg);
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-home {
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin-right: 20px;
+  border-radius: 100%;
+  border: 2px solid #ffffff;
+  text-align: center;
+  display: inline-block;
+  float:left;
+}
+
+.left-side {
+  float:left;
+}
+
+.home-text {
+  color:white;
+}
