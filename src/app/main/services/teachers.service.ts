@@ -8,27 +8,27 @@ import 'rxjs/add/operator/map';
  */
 
 @Injectable()
-export class CoursesService {
+export class TeachersService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private search: URLSearchParams;
 
-  private urlCourses = "/api/courses/";
-  private urlSearch = "/api/courses/search?name=";
+  private urlTeacher = "/api/teachers/";
+  private urlSearch = "/api/teachers/search?name=";
 
   constructor(private http: Http) {
     this.http = http;
   }
 
-  getCourses(): Observable<JsonObject> {
-    return this.http.get(this.urlCourses).map((response: Response) => <JsonObject>response.json());
+  getTeachers(): Observable<JsonObject> {
+    return this.http.get(this.urlTeacher).map((response: Response) => <JsonObject>response.json());
   }
 
-  getFilteredCourses(value): Observable<JsonObject> {
+  getFilteredTeachers(value): Observable<JsonObject> {
     return this.http.get(this.urlSearch + value).map((response: Response) => <JsonObject>response.json());
   }
 
-  getCourse(id): Observable<any> {
-    return this.http.get(this.urlCourses + id)
+  getTeacher(id): Observable<any> {
+    return this.http.get(this.urlTeacher + id)
       .map((response: Response) => response.json());
   }
 }

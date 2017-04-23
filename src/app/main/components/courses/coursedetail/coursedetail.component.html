@@ -1,0 +1,40 @@
+<div id="page-wrapper">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <h2><a routerLink="/courses">Cursuri</a> -> <a>Vizualizare curs</a></h2>
+  </div>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" style="padding-bottom: 15px; background-color: white;">
+      <div class="col-lg-12 no-padding">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5>Vizualizare detalii curs</h5>
+          </div>
+          <div class="ibox-content">
+            <div class="wizard-big white-bg">
+              <div class="col-lg-12" style="background-color:white !important;">
+                <acar-tabs [tabs]="tabs" [selectedTab]="selectedTab" [courseId]="courseSelected"></acar-tabs>
+              </div>
+              <div class="col-lg-12">
+                <acar-courseinfo *ngIf="selectedTab.select == 1" [courseId]="courseSelected"></acar-courseinfo>
+              </div>
+              <div class="col-lg-12">
+                <acar-books *ngIf="selectedTab.select == 2" [courseId]="courseSelected"></acar-books>
+              </div>
+              <div class="col-lg-12">
+                <acar-projects *ngIf="selectedTab.select == 3" [courseId]="courseSelected"></acar-projects>
+              </div>
+              <div class="col-lg-12">
+                <acar-docs *ngIf="selectedTab.select == 4" [courseId]="courseSelected"></acar-docs>
+              </div>
+              <div class="col-lg-12">
+                <acar-coursegossips *ngIf="selectedTab.select == 5"></acar-coursegossips>
+              </div>
+
+              <br/><br/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

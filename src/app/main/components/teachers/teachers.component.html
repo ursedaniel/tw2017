@@ -1,13 +1,13 @@
 <div id="page-wrapper">
   <div class="row wrapper border-bottom white-bg page-heading animated fadeInDown">
-    <h2>Cursuri</h2>
+    <h2>Profesori</h2>
   </div>
   <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
       <div class="col-lg-12">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
-            <h5>Lista cursurilor</h5>
+            <h5>Lista profesorilor</h5>
           </div>
           <div class="ibox-content">
             <div class="table-responsive">
@@ -23,20 +23,19 @@
               </table>
             </div>
             <div class="row animate fadeInDown">
-              <div *ngFor="let course of courses" class="box box-zoom">
-                <a [routerLink]="['/courses',course.id]">
-                  <div class="boxes-orange col-sm-2" *ngIf="course.id % 10 % 2 == 1">
-                    <i class="fa fa-pencil icon-box-orange"></i>
-                    <span>{{course.name}}</span> <br/>
-                    <span>Titular: {{course.main_teacher}}</span> <br/>
-                    <span>An: {{course.year}}</span>
+              <div *ngFor="let teacher of teachers" class="box box-zoom">
+                <a [routerLink]="['/teachers',teacher.id]">
+                  <div class="boxes-orange col-sm-2" *ngIf="teacher.id % 10 % 2 == 1">
+                    <img src="../../../../assets/profile_male.png" class="icon-box-orange"/>
+                    <span>{{teacher.name}}</span> <br/>
+                    <span>Titlu: {{teacher.title}}</span> <br/>
+                    <span>Rating: <i class="fa fa-star yellow-star"></i>{{teacher.rating}}</span>
                   </div>
-
-                  <div class="boxes-blue col-sm-2" *ngIf="course.id % 10 % 2 == 0">
-                    <i class="fa fa-paperclip icon-box-blue"></i>
-                    {{course.name}}<br/>
-                    Titular: {{course.main_teacher}}<br/>
-                    An: {{course.year}}
+                  <div class="boxes-blue col-sm-2" *ngIf="teacher.id % 10 % 2 == 0">
+                    <img src="../../../../assets/profile_male.png" class="icon-box-blue"/>
+                    <span>{{teacher.name}}</span> <br/>
+                    <span>Titlu: {{teacher.title}}</span> <br/>
+                    <span>Rating: <i class="fa fa-star yellow-star"></i>{{teacher.rating}}</span>
                   </div>
                 </a>
               </div>
@@ -47,4 +46,3 @@
     </div>
   </div>
 </div>
-

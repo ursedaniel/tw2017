@@ -1,0 +1,48 @@
+.home-i {
+  color:black;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 100%;
+  font-size:40px;
+}
+
+.row:hover .home-i{
+  transform: rotate(360deg);
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-home {
+  width: auto;
+  padding: 0;
+  margin-right: 20px;
+  border-radius: 100%;
+  border: 2px solid black;
+  text-align: center;
+  display: inline-block;
+  float:left;
+  height:70px;
+}
+
+.left-side {
+  float:left;
+}
+
+.highlight {
+  color:black;
+  font-weight:600;
+  font-size:30px;
+}
+
+.home-text{
+  color:black;
+}
+
+.yellow-star{
+  color:yellow !important;
+  font-size:15px;
+}
+
+.yellow-star:hover {
+  transform: 0 !important;
+}

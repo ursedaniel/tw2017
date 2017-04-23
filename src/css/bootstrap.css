@@ -1081,9 +1081,10 @@ body {
   line-height: 1.42857143;
   color: #333;
   background-image: url("../assets/main-background.jpg");
-  background-size: cover;
   background-repeat: no-repeat;
   background-position: left top;
+  background-attachment: fixed;
+  overflow: auto;
 }
 input,
 button,
