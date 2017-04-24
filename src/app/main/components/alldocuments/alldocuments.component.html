@@ -19,29 +19,26 @@
                 </thead>
               </table>
             </div>
-            <div class="row animate fadeInDown overflow">
-              <div *ngFor="let book of books" class="box box-zoom">
-                <div class="boxes-orange col-sm-2" *ngIf="book.id % 10 % 2 == 1">
-                  <i class="fa fa-book icon-box-orange"></i>
+            <div class="row animate fadeInDown">
+              <div *ngFor="let doc of docs" class="box box-zoom">
+                <div class="boxes-orange col-sm-2" *ngIf="doc.id % 10 % 2 == 1">
+                  <i class="fa fa-file-text icon-box-orange"></i>
                   <span>
                     <strong>Curs:</strong> Nume Curs <br/>
-                  <strong>Titlu carte</strong> {{book.title}}<br/>
-                  <strong>Autor:</strong> {{book.author}} <br/>
-                  <strong>Locatie:</strong> {{book.location}}
+                  <strong>Titlu:</strong> {{doc.title}}<br/>
+                  <strong>Link:</strong> <a>{{doc.link}}</a>
                 </span>
                 </div>
 
-                <div class="boxes-blue col-sm-2" *ngIf="book.id % 10 % 2 == 0">
-                  <i class="fa fa-book icon-box-blue"></i>
+                <div class="boxes-blue col-sm-2" *ngIf="doc.id % 10 % 2 == 0">
+                  <i class="fa fa-file-text icon-box-blue"></i>
                   <span>
                     <strong>Curs:</strong> Nume Curs <br/>
-                  <strong>Titlu carte</strong> {{book.title}}<br/>
-                  <strong>Autor:</strong> {{book.author}} <br/>
-                  <strong>Locatie:</strong> {{book.location}}
+                  <strong>Titlu:</strong> {{doc.title}}<br/>
+                  <strong>Link:</strong> <a>{{doc.link}}</a>
                 </span>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

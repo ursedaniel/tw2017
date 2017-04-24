@@ -2,3 +2,10 @@
   height: 100vh;
   background: #293846;
 }
+
+.logo{
+  display: block;
+  margin: auto;
+  margin-top: 48px;
+  width: 78%;
+}

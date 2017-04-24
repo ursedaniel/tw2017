@@ -9,16 +9,20 @@ import {TeachersComponent} from "../main/components/teachers/teachers.component"
 import {CoursedetailComponent} from "../main/components/courses/coursedetail/coursedetail.component";
 import {AllbooksComponent} from "../main/components/allbooks/allbooks.component";
 import {TeacherdetailComponent} from "../main/components/teachers/teacherdetail/teacherdetail.component";
+import {AllprojectsComponent} from "../main/components/allprojects/allprojects.component";
+import {AlldocumentsComponent} from "../main/components/alldocuments/alldocuments.component";
 
 export const routes: Routes = [
-  {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'courses', component: CoursesComponent},
   {path: 'courses/:id', component: CoursedetailComponent},
   {path: 'teachers', component: TeachersComponent},
   {path: 'teachers/:id', component: TeacherdetailComponent},
   {path: 'books', component: AllbooksComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: 'projects', component: AllprojectsComponent},
+  {path: 'documents', component: AlldocumentsComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 export const appRoutingProviders: any[] = [];

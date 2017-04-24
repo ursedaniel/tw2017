@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import { ChartsModule } from 'ng2-charts';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './main/components/login/login.component';
@@ -24,6 +25,10 @@ import { TeacherdetailComponent } from './main/components/teachers/teacherdetail
 import { TeacherinfoComponent } from './main/components/teachers/teacherdetail/teacherinfo/teacherinfo.component';
 import { TeachergossipsComponent } from './main/components/teachers/teacherdetail/teachergossips/teachergossips.component';
 import { CoursegossipsComponent } from './main/components/courses/coursedetail/coursegossips/coursegossips.component';
+import { CoursegradesComponent } from './main/components/courses/coursedetail/coursegrades/coursegrades.component';
+import { AllprojectsComponent } from './main/components/allprojects/allprojects.component';
+import { AlldocumentsComponent } from './main/components/alldocuments/alldocuments.component';
+import { NavbarComponent } from './common/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -45,11 +50,17 @@ import { CoursegossipsComponent } from './main/components/courses/coursedetail/c
     TeacherinfoComponent,
     TeachergossipsComponent,
     CoursegossipsComponent,
+    CoursegradesComponent,
+    CoursegradesComponent,
+    AllprojectsComponent,
+    AlldocumentsComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ChartsModule,
     routing
   ],
   providers: [

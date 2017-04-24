@@ -17,6 +17,7 @@ export class CoursedetailComponent implements OnInit {
     new Tab(3,"Proiecte","projects",this.courseSelected),
     new Tab(4,"Documente","docs",this.courseSelected),
     new Tab(5,"Barfe anonime","gossips",this.courseSelected),
+    new Tab(6,"Statistici anonime","statistics",this.courseSelected)
   ];
 
   private courseSelected:number;

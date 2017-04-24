@@ -13,8 +13,7 @@ export class TeacherdetailComponent implements OnInit {
   private selectedTab:TabSelected = new TabSelected(1);
   private tabs:Array<Tab> = [
     new Tab(1,"Informatii profesor","details",this.teacherSelected),
-    new Tab(2,"Barfe anonime","contacts",this.teacherSelected),
-    new Tab(3,"Orar","projects",this.teacherSelected)
+    new Tab(2,"Barfe anonime","contacts",this.teacherSelected)
   ];
 
   private teacherSelected:number;
