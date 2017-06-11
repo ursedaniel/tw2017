@@ -39,11 +39,13 @@ public class CourseServiceImpl implements CourseService{
     @Override
     @Transactional(readOnly = true)
     public Page<CourseVO> getCourses(CourseSearchVO search, Pageable pageable) {
+
         return convertToVO(courseRepository.findAll(CourseSpecification.searchByVO(search), pageable));
     }
 
     @Override
     public CourseVO getCourse(Integer id) {
+
         Course course = courseRepository.findOne(id);
 
         if (course == null) {
@@ -55,6 +57,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public void createCourse(CourseVO courseVO) {
+
         if (courseRepository.findOne(courseVO.getId()) != null) {
             throw new BusinessException(" Cursul cu id-ul " + courseVO.getId() + " exista deja in baza de date! ");
         }
@@ -65,6 +68,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public void updateCourse(Integer id, CourseVO courseVO) {
+
         if (courseRepository.findOne(id) == null) {
             throw new BusinessException(" Cursul cu id-ul " + id + " nu exista in baza de date! ");
         }
