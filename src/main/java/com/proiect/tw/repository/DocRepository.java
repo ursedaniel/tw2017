@@ -14,4 +14,7 @@ public interface DocRepository extends JpaRepository<Doc, Integer>, JpaSpecifica
 
     @Query("select d from Doc d where d.course_id = ?1")
     Page<Doc> getDocsByQuery(Integer id_course, Pageable pageable);
+
+
+
 }

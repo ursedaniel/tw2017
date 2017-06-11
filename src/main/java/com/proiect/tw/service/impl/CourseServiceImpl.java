@@ -4,18 +4,22 @@ import com.proiect.tw.exception.BusinessException;
 import com.proiect.tw.model.Book;
 import com.proiect.tw.model.Course;
 import com.proiect.tw.model.Doc;
+import com.proiect.tw.model.Project;
 import com.proiect.tw.repository.BookRepository;
 import com.proiect.tw.repository.CourseRepository;
 import com.proiect.tw.repository.DocRepository;
+import com.proiect.tw.repository.ProjectRepository;
 import com.proiect.tw.repository.specification.CourseSpecification;
 import com.proiect.tw.service.CourseService;
 import com.proiect.tw.service.DocService;
 import com.proiect.tw.vo.BookVO;
 import com.proiect.tw.vo.CourseVO;
 import com.proiect.tw.vo.DocVO;
+import com.proiect.tw.vo.ProjectVO;
 import com.proiect.tw.vo.convertor.BookConvertor;
 import com.proiect.tw.vo.convertor.CourseConvertor;
 import com.proiect.tw.vo.convertor.DocConvertor;
+import com.proiect.tw.vo.convertor.ProjectConvertor;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,6 +51,12 @@ public class CourseServiceImpl implements CourseService{
     @Autowired
     private DocConvertor docConvertor;
 
+    @Autowired
+    private ProjectRepository projectRepository;
+
+    @Autowired
+    private ProjectConvertor projectConvertor;
+
     private Page<CourseVO> convertToVO(Page<Course> page) {
         return page.map(courseConvertor::toVO);
     }
@@ -57,6 +67,10 @@ public class CourseServiceImpl implements CourseService{
 
     private Page<DocVO> convertToVODocs(Page<Doc> page) {
         return page.map(docConvertor::toVO);
+    }
+
+    private Page<ProjectVO> convertToVOProjects(Page<Project> page) {
+        return page.map(projectConvertor::toVO);
     }
 
     @Override
@@ -121,5 +135,11 @@ public class CourseServiceImpl implements CourseService{
     public Page<DocVO> getDocsByCourse(Integer id_course, Pageable pageable) {
 
         return convertToVODocs(docRepository.getDocsByQuery(id_course, pageable));
+    }
+
+    @Override
+    public Page<ProjectVO> getProjectsByCourse(Integer id_course, Pageable pageable) {
+
+        return convertToVOProjects(projectRepository.getProjectsByQuery(id_course, pageable));
     }
 }

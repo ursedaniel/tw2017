@@ -4,6 +4,7 @@ import com.proiect.tw.service.CourseService;
 import com.proiect.tw.vo.BookVO;
 import com.proiect.tw.vo.CourseVO;
 import com.proiect.tw.vo.DocVO;
+import com.proiect.tw.vo.ProjectVO;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -59,5 +60,11 @@ public class CourseController {
     public Page<DocVO> getDocsByCourse(@PathVariable("id_course") Integer id_course, Pageable pageable) {
 
         return courseService.getDocsByCourse(id_course,pageable);
+    }
+
+    @RequestMapping(value = "/courses/{id_course}/projects")
+    public Page<ProjectVO> getProjectsByCourse(@PathVariable("id_course") Integer id_course, Pageable pageable) {
+
+        return courseService.getProjectsByCourse(id_course,pageable);
     }
 }
