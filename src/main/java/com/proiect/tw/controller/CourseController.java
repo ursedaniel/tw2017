@@ -1,6 +1,7 @@
 package com.proiect.tw.controller;
 
 import com.proiect.tw.service.CourseService;
+import com.proiect.tw.vo.BookVO;
 import com.proiect.tw.vo.CourseVO;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,11 @@ public class CourseController {
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.DELETE)
     public void deleteCourse(@PathVariable("id") Integer id) {
         courseService.deleteCourse(id);
+    }
+
+    @RequestMapping(value = "/courses/{id_course}/books")
+    public Page<BookVO> getBooksByCourse(@PathVariable("id_course") Integer id_course, Pageable pageable) {
+
+        return courseService.getBooksByCourse(id_course,pageable);
     }
 }

@@ -2,10 +2,12 @@ package com.proiect.tw.vo.convertor;
 
 import com.proiect.tw.model.Project;
 import com.proiect.tw.vo.ProjectVO;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by JACK on 6/11/2017.
  */
+@Service
 public class ProjectConvertor {
 
     public ProjectVO toVO(Project project){

@@ -1,11 +1,15 @@
 package com.proiect.tw.service.impl;
 
 import com.proiect.tw.exception.BusinessException;
+import com.proiect.tw.model.Book;
 import com.proiect.tw.model.Course;
+import com.proiect.tw.repository.BookRepository;
 import com.proiect.tw.repository.CourseRepository;
 import com.proiect.tw.repository.specification.CourseSpecification;
 import com.proiect.tw.service.CourseService;
+import com.proiect.tw.vo.BookVO;
 import com.proiect.tw.vo.CourseVO;
+import com.proiect.tw.vo.convertor.BookConvertor;
 import com.proiect.tw.vo.convertor.CourseConvertor;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +30,18 @@ public class CourseServiceImpl implements CourseService{
     @Autowired
     private CourseConvertor courseConvertor;
 
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private BookConvertor bookConvertor;
+
     private Page<CourseVO> convertToVO(Page<Course> page) {
         return page.map(courseConvertor::toVO);
+    }
+
+    private Page<BookVO> convertToVOBooks(Page<Book> page) {
+        return page.map(bookConvertor::toVO);
     }
 
     @Override
@@ -80,5 +94,11 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public void deleteCourse(Integer id) {
         courseRepository.delete(id);
+    }
+
+    @Override
+    public Page<BookVO> getBooksByCourse(Integer id_course, Pageable pageable) {
+
+        return convertToVOBooks(bookRepository.getBooksByQuery(id_course, pageable));
     }
 }

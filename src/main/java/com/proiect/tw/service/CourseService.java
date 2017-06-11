@@ -1,5 +1,6 @@
 package com.proiect.tw.service;
 
+import com.proiect.tw.vo.BookVO;
 import com.proiect.tw.vo.CourseVO;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.data.domain.Page;
@@ -22,4 +23,5 @@ public interface CourseService {
     void deleteCourse(Integer id);
 
 
+    Page<BookVO> getBooksByCourse(Integer id_course, Pageable pageable);
 }
