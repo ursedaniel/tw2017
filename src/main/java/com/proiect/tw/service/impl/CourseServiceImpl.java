@@ -3,14 +3,19 @@ package com.proiect.tw.service.impl;
 import com.proiect.tw.exception.BusinessException;
 import com.proiect.tw.model.Book;
 import com.proiect.tw.model.Course;
+import com.proiect.tw.model.Doc;
 import com.proiect.tw.repository.BookRepository;
 import com.proiect.tw.repository.CourseRepository;
+import com.proiect.tw.repository.DocRepository;
 import com.proiect.tw.repository.specification.CourseSpecification;
 import com.proiect.tw.service.CourseService;
+import com.proiect.tw.service.DocService;
 import com.proiect.tw.vo.BookVO;
 import com.proiect.tw.vo.CourseVO;
+import com.proiect.tw.vo.DocVO;
 import com.proiect.tw.vo.convertor.BookConvertor;
 import com.proiect.tw.vo.convertor.CourseConvertor;
+import com.proiect.tw.vo.convertor.DocConvertor;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,12 +41,22 @@ public class CourseServiceImpl implements CourseService{
     @Autowired
     private BookConvertor bookConvertor;
 
+    @Autowired
+    private DocRepository docRepository;
+
+    @Autowired
+    private DocConvertor docConvertor;
+
     private Page<CourseVO> convertToVO(Page<Course> page) {
         return page.map(courseConvertor::toVO);
     }
 
     private Page<BookVO> convertToVOBooks(Page<Book> page) {
         return page.map(bookConvertor::toVO);
+    }
+
+    private Page<DocVO> convertToVODocs(Page<Doc> page) {
+        return page.map(docConvertor::toVO);
     }
 
     @Override
@@ -100,5 +115,11 @@ public class CourseServiceImpl implements CourseService{
     public Page<BookVO> getBooksByCourse(Integer id_course, Pageable pageable) {
 
         return convertToVOBooks(bookRepository.getBooksByQuery(id_course, pageable));
+    }
+
+    @Override
+    public Page<DocVO> getDocsByCourse(Integer id_course, Pageable pageable) {
+
+        return convertToVODocs(docRepository.getDocsByQuery(id_course, pageable));
     }
 }
