@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by JACK on 4/21/2017.
@@ -30,11 +31,13 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<CourseVO> getCourses(Pageable pageable) {
         return convertToVO(courseRepository.findAll(pageable));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<CourseVO> getCourses(CourseSearchVO search, Pageable pageable) {
         return convertToVO(courseRepository.findAll(CourseSpecification.searchByVO(search), pageable));
     }

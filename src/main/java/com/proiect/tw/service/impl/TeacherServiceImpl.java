@@ -28,6 +28,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<TeacherVO> getTeachers(Pageable pageable) {
         return convertToVO(teacherRepository.findAll(pageable));
     }

@@ -1,5 +1,7 @@
 package com.proiect.tw.vo;
 
+import com.proiect.tw.model.Course;
+
 /**
  * Created by JACK on 4/19/2017.
  */
