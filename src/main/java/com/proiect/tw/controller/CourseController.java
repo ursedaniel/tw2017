@@ -22,31 +22,37 @@ public class CourseController {
 
     @RequestMapping("/courses")
     public Page<CourseVO> getCourses(Pageable pageable) {
+
         return courseService.getCourses(pageable);
     }
 
     @RequestMapping(value = "/courses/search")
     public Page<CourseVO> searchCourses(@ModelAttribute CourseSearchVO searchVO, Pageable page) {
+
         return courseService.getCourses(searchVO, page);
     }
 
     @RequestMapping("/courses/{id}")
     public CourseVO getCourse(@PathVariable("id") Integer id) {
+
         return courseService.getCourse(id);
     }
 
     @RequestMapping(value = "/courses", method = RequestMethod.POST)
     public void createCourse(@RequestBody CourseVO courseVO) {
+
         courseService.createCourse(courseVO);
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.PUT)
     public void updateCourse(@PathVariable("id") Integer id, @RequestBody CourseVO courseVO) {
+
         courseService.updateCourse(id, courseVO);
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.DELETE)
     public void deleteCourse(@PathVariable("id") Integer id) {
+
         courseService.deleteCourse(id);
     }
 

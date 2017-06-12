@@ -20,31 +20,37 @@ public class TeacherController {
 
     @RequestMapping("/teachers")
     public Page<TeacherVO> getTeachers(Pageable pageable) {
+
         return teacherService.getTeachers(pageable);
     }
 
     @RequestMapping(value = "/teachers/search")
     public Page<TeacherVO> searchTeachers(@ModelAttribute TeacherSearchVO searchVO, Pageable page) {
+
         return teacherService.getTeachers(searchVO, page);
     }
 
     @RequestMapping("/teachers/{id}")
     public TeacherVO getTeacher(@PathVariable("id") Integer id) {
+
         return teacherService.getTeacher(id);
     }
 
     @RequestMapping(value = "/teachers", method = RequestMethod.POST)
     public void createTeacher(@RequestBody TeacherVO teacherVO) {
+
         teacherService.createTeacher(teacherVO);
     }
 
     @RequestMapping(value = "/teachers/{id}", method = RequestMethod.PUT)
     public void updateTeacher(@PathVariable("id") Integer id, @RequestBody TeacherVO teacherVO) {
+
         teacherService.updateTeacher(id, teacherVO);
     }
 
     @RequestMapping(value = "/teachers/{id}", method = RequestMethod.DELETE)
     public void deleteTeacher(@PathVariable("id") Integer id) {
+
         teacherService.deleteTeacher(id);
     }
 }
