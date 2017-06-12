@@ -14,6 +14,10 @@ export class CoursesService {
 
   private urlCourses = "/api/courses/";
   private urlSearch = "/api/courses/search?name=";
+  private urlBooks = "/books";
+  private urlProjects = "/projects";
+  private urlDocs = "/docs";
+  private urlGossips = "/gossips";
 
   constructor(private http: Http) {
     this.http = http;
@@ -22,6 +26,23 @@ export class CoursesService {
   getCourses(): Observable<JsonObject> {
     return this.http.get(this.urlCourses).map((response: Response) => <JsonObject>response.json());
   }
+
+  getBooks(courseId): Observable<JsonObject> {
+    return this.http.get(this.urlCourses + courseId + this.urlBooks).map((response: Response) => <JsonObject>response.json());
+  }
+
+  getGossips(courseId): Observable<JsonObject> {
+    return this.http.get(this.urlCourses + courseId + this.urlGossips).map((response: Response) => <JsonObject>response.json());
+  }
+
+  getDocs(courseId): Observable<JsonObject> {
+    return this.http.get(this.urlCourses + courseId + this.urlDocs).map((response: Response) => <JsonObject>response.json());
+  }
+
+  getProjects(courseId): Observable<JsonObject> {
+    return this.http.get(this.urlCourses + courseId + this.urlProjects).map((response: Response) => <JsonObject>response.json());
+  }
+
 
   getFilteredCourses(value): Observable<JsonObject> {
     return this.http.get(this.urlSearch + value).map((response: Response) => <JsonObject>response.json());
