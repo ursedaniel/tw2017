@@ -1,12 +1,14 @@
 package com.proiect.tw.controller;
 
 import com.proiect.tw.service.ProjectService;
+import com.proiect.tw.upload.ProjectUpload;
 import com.proiect.tw.vo.ProjectVO;
 import com.proiect.tw.vo.search.ProjectSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by JACK on 6/11/2017.
@@ -16,6 +18,9 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private ProjectUpload projectUpload;
 
     @RequestMapping("/projects")
     public Page<ProjectVO> getProjects(Pageable pageable) {
@@ -51,6 +56,12 @@ public class ProjectController {
     public void deleteProject(@PathVariable("id") Integer id) {
 
         projectService.deleteProject(id);
+    }
+
+    @RequestMapping(value = "/projects/{id_proj}/upload", method=RequestMethod.POST)
+    public boolean uploadProject(@PathVariable("id_proj") int id_proj, @RequestParam("files") MultipartFile uploadingFile) {
+
+        return projectUpload.uploadProject(id_proj, uploadingFile);
     }
 }
 
