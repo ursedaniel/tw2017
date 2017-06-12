@@ -62,7 +62,8 @@ public class Gossip {
         this.title = title;
     }
 
-    @Column(name = "POSTING_DATE")
+    @Column(name = "POSTING_DATE", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getPosting_date() {
         return posting_date;
     }
