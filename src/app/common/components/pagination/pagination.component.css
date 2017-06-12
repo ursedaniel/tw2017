@@ -1,0 +1,21 @@
+#page > span:hover{
+  background-color:#fff;
+}
+
+#page span{
+  color:#4b4b4b;
+  font-weight:bold;
+}
+
+.pagination li a {
+  background-color: #e6e7e8;
+}
+
+.pagination > .active > a {
+  background-color: white;
+}
+
+.pagination li a:hover {
+  background-color: #4b4b4b;
+  color: white;
+}

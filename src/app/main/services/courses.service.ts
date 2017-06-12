@@ -3,6 +3,7 @@ import {Headers, URLSearchParams, Http, Response} from "@angular/http";
 import {JsonObject} from "../interfaces/JsonObject";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
+import {SearchParams} from "../interfaces/SearchParams";
 /**
  * Created by Daniel on 4/22/2017.
  */
@@ -13,7 +14,7 @@ export class CoursesService {
   private search: URLSearchParams;
 
   private urlCourses = "/api/courses/";
-  private urlSearch = "/api/courses/search?name=";
+  private urlSearch = "/api/courses/search?sort=id,asc";
   private urlBooks = "/books";
   private urlProjects = "/projects";
   private urlDocs = "/docs";
@@ -23,8 +24,14 @@ export class CoursesService {
     this.http = http;
   }
 
-  getCourses(): Observable<JsonObject> {
-    return this.http.get(this.urlCourses).map((response: Response) => <JsonObject>response.json());
+  getCourses(searchParamas:SearchParams): Observable<JsonObject> {
+    this.setSearch(searchParamas);
+    return this.http.get(this.urlCourses,{search:this.search}).map((response: Response) => <JsonObject>response.json());
+  }
+
+  getFilteredCourses(searchParamas:SearchParams): Observable<JsonObject> {
+    this.setSearch(searchParamas);
+    return this.http.get(this.urlSearch,{search:this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
   getBooks(courseId): Observable<JsonObject> {
@@ -44,12 +51,22 @@ export class CoursesService {
   }
 
 
-  getFilteredCourses(value): Observable<JsonObject> {
-    return this.http.get(this.urlSearch + value).map((response: Response) => <JsonObject>response.json());
-  }
-
   getCourse(id): Observable<any> {
     return this.http.get(this.urlCourses + id)
       .map((response: Response) => response.json());
   }
+
+  private setSearch(searchParamas:SearchParams):void{
+    this.search = new URLSearchParams();
+    this.search.set("page",searchParamas.page.toString());
+    this.search.set("size",searchParamas.size.toString());
+    this.search.set("sort",searchParamas.sort.toString());
+    for (let key in searchParamas.search) {
+      if (searchParamas.search.hasOwnProperty(key)) {
+        let val = searchParamas.search[key];
+        this.search.set(key, val);
+      }
+    }
+  }
+
 }

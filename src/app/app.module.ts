@@ -29,6 +29,7 @@ import { CoursegradesComponent } from './main/components/courses/coursedetail/co
 import { AllprojectsComponent } from './main/components/allprojects/allprojects.component';
 import { AlldocumentsComponent } from './main/components/alldocuments/alldocuments.component';
 import { NavbarComponent } from './common/components/navbar/navbar.component';
+import {PaginationComponent} from "./common/components/pagination/pagination.component";
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { NavbarComponent } from './common/components/navbar/navbar.component';
     AllprojectsComponent,
     AlldocumentsComponent,
     NavbarComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

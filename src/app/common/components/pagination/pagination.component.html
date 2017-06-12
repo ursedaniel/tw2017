@@ -1,0 +1,20 @@
+<div class="col-sm-8">
+<ul class="pagination" *ngIf="pager.totalPages>0">
+  <li><a (click)="jump(0)" *ngIf="pager.page>0">Prima</a></li>
+  <li><a (click)="jump(pager.page-1)" *ngIf="pager.page>0">Precedenta</a></li>
+  <li id="page"><span>pagina {{pager.page+1}} din {{pager.totalPages}}</span></li>
+  <li><a (click)="jump(pager.page+1)" *ngIf="pager.page+1!=pager.totalPages">Urmatoarea</a></li>
+  <li><a (click)="jump(pager.totalPages-1)" *ngIf="pager.page+1!=pager.totalPages">Ultima</a></li>
+</ul>
+</div>
+<div class="col-sm-4 text-right">
+  <ul class="pagination">
+    <li *ngFor="let nr of pager.chooseRowsOnPage" (click)="changeRows(nr)" class="{{nr==pager.rows?'active':''}}"><a>{{nr}}</a></li>
+  </ul>
+</div>
+
+<!--<div class="col-sm-4 text-right">-->
+  <!--<select class="pagination" (change)="changeRows(nr)">-->
+    <!--<option *ngFor="let nr of pager.chooseRowsOnPage"  class="{{nr==pager.rows?'active':''}}">{{nr}}</option>-->
+  <!--</select>-->
+<!--</div>-->
