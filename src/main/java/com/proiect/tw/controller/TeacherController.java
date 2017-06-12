@@ -2,6 +2,7 @@ package com.proiect.tw.controller;
 
 
 import com.proiect.tw.service.TeacherService;
+import com.proiect.tw.vo.GossipVO;
 import com.proiect.tw.vo.TeacherVO;
 import com.proiect.tw.vo.search.TeacherSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,11 @@ public class TeacherController {
     public void deleteTeacher(@PathVariable("id") Integer id) {
 
         teacherService.deleteTeacher(id);
+    }
+
+    @RequestMapping(value = "/teachers/{id_teacher}/gossips")
+    public Page<GossipVO> getGossipsByTeacher(@PathVariable("id_teacher") Integer id_teacher, Pageable pageable) {
+
+        return teacherService.getGossipsByTeacher(id_teacher,pageable);
     }
 }

@@ -141,6 +141,6 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public Page<GossipVO> getGossipsByCourse(Integer id_course, Pageable pageable) {
 
-        return convertToVOGossips(gossipRepository.getGossipsByQuery(id_course, pageable));
+        return convertToVOGossips(gossipRepository.getGossipsByCourseQuery(id_course, pageable));
     }
 }

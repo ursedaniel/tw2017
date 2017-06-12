@@ -36,17 +36,12 @@ public class TeacherSpecification {
                     }
                 }
                 if (teacherSearchVO.getRating() != null) {
-                    predicates.add(cb.like(root.get("rating"), "%" + teacherSearchVO.getRating() + "%"));
+                    predicates.add(cb.equal(root.get("rating"), teacherSearchVO.getRating()));
                     if (teacherSearchVO.isMatch()) {
                         predicates.add(cb.equal(root.get("rating"), teacherSearchVO.getRating()));
                     }
-                    if (!teacherSearchVO.isMatch()) {
-                        predicates.add(cb.like(root.get("rating"), "%" + teacherSearchVO.getRating() + "%"));
-                    }
-                    if (teacherSearchVO.isStartWith()) {
-                        predicates.add(cb.like(root.get("rating"), teacherSearchVO.getRating() + "%"));
-                    }
                 }
+
                 return cb.and(predicates.toArray(new Predicate[0]));
             }
         };

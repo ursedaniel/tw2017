@@ -1,6 +1,7 @@
 package com.proiect.tw.service;
 
 
+import com.proiect.tw.vo.GossipVO;
 import com.proiect.tw.vo.TeacherVO;
 import com.proiect.tw.vo.search.TeacherSearchVO;
 import org.springframework.data.domain.Page;
@@ -18,4 +19,6 @@ public interface TeacherService {
     void createTeacher(TeacherVO teacherVO);
     void updateTeacher(Integer id, TeacherVO teacherVO);
     void deleteTeacher(Integer id);
+
+    Page<GossipVO> getGossipsByTeacher(Integer id_teacher, Pageable pageable);
 }

@@ -14,5 +14,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface GossipRepository  extends JpaRepository<Gossip, Integer>, JpaSpecificationExecutor<Gossip> {
 
     @Query("select g from Gossip g where g.course_id = ?1")
-    Page<Gossip> getGossipsByQuery(Integer id_course, Pageable pageable);
+    Page<Gossip> getGossipsByCourseQuery(Integer id_course, Pageable pageable);
+
+    @Query("select g from Gossip g where g.teacher_id = ?1")
+    Page<Gossip> getGossipsByTeacherQuery(Integer id_teacher, Pageable pageable);
 }

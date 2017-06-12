@@ -1,11 +1,15 @@
 package com.proiect.tw.service.impl;
 
 import com.proiect.tw.exception.BusinessException;
+import com.proiect.tw.model.Gossip;
 import com.proiect.tw.model.Teacher;
+import com.proiect.tw.repository.GossipRepository;
 import com.proiect.tw.repository.TeacherRepository;
 import com.proiect.tw.repository.specification.TeacherSpecification;
 import com.proiect.tw.service.TeacherService;
+import com.proiect.tw.vo.GossipVO;
 import com.proiect.tw.vo.TeacherVO;
+import com.proiect.tw.vo.convertor.GossipConvertor;
 import com.proiect.tw.vo.convertor.TeacherConvertor;
 import com.proiect.tw.vo.search.TeacherSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +26,19 @@ public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private TeacherConvertor teacherConvertor;
 
+    @Autowired
+    private GossipRepository gossipRepository;
+
+    @Autowired
+    private GossipConvertor gossipConvertor;
+
     private Page<TeacherVO> convertToVO(Page<Teacher> page) {
 
         return page.map(teacherConvertor::toVO);
+    }
+
+    private Page<GossipVO> convertToVOGossips(Page<Gossip> page) {
+        return page.map(gossipConvertor::toVO);
     }
 
     @Override
@@ -72,5 +86,11 @@ public class TeacherServiceImpl implements TeacherService {
     public void deleteTeacher(Integer id) {
 
         teacherRepository.delete(id);
+    }
+
+    @Override
+    public Page<GossipVO> getGossipsByTeacher(Integer id_teacher, Pageable pageable) {
+
+        return convertToVOGossips(gossipRepository.getGossipsByTeacherQuery(id_teacher, pageable));
     }
 }
