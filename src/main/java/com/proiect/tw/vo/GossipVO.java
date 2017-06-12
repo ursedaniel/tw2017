@@ -13,12 +13,12 @@ public class GossipVO {
     Integer course_id;
     Integer teacher_id;
     String title;
-    Date posting_date;
+    String posting_date;
     String content;
 
     public GossipVO() {}
 
-    public GossipVO(Integer id, Integer course_id, Integer teacher_id, String title, Date posting_date, String content) {
+    public GossipVO(Integer id, Integer course_id, Integer teacher_id, String title, String posting_date, String content) {
         this.id = id;
         this.course_id = course_id;
         this.teacher_id = teacher_id;
@@ -59,11 +59,11 @@ public class GossipVO {
         this.title = title;
     }
 
-    public Date getPosting_date() {
+    public String getPosting_date() {
         return posting_date;
     }
 
-    public void setPosting_date(Date posting_date) {
+    public void setPosting_date(String posting_date) {
         this.posting_date = posting_date;
     }
 

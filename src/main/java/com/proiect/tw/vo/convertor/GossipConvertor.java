@@ -1,8 +1,11 @@
 package com.proiect.tw.vo.convertor;
 
 import com.proiect.tw.model.Gossip;
+import com.proiect.tw.util.DateUtils;
 import com.proiect.tw.vo.GossipVO;
 import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
 
 /**
  * Created by JACK on 6/12/2017.
@@ -17,7 +20,9 @@ public class GossipConvertor {
         gossipVO.setCourse_id(gossip.getCourse_id());
         gossipVO.setTeacher_id(gossip.getTeacher_id());
         gossipVO.setTitle(gossip.getTitle());
-        gossipVO.setPosting_date(gossip.getPosting_date());
+        if (gossip.getPosting_date() != null){
+            gossipVO.setPosting_date(new SimpleDateFormat(DateUtils.dateTimeFormat).format(gossip.getPosting_date()));
+        }
         gossipVO.setContent(gossip.getContent());
 
         return gossipVO;
@@ -30,7 +35,6 @@ public class GossipConvertor {
         gossip.setCourse_id(gossipVO.getCourse_id());
         gossip.setTeacher_id(gossipVO.getTeacher_id());
         gossip.setTitle(gossipVO.getTitle());
-        gossip.setPosting_date(gossipVO.getPosting_date());
         gossip.setContent(gossipVO.getContent());
 
         return gossip;
