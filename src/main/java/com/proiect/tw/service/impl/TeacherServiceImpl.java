@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TeacherServiceImpl implements TeacherService {
@@ -24,23 +23,25 @@ public class TeacherServiceImpl implements TeacherService {
     private TeacherConvertor teacherConvertor;
 
     private Page<TeacherVO> convertToVO(Page<Teacher> page) {
+
         return page.map(teacherConvertor::toVO);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<TeacherVO> getTeachers(Pageable pageable) {
+
         return convertToVO(teacherRepository.findAll(pageable));
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<TeacherVO> getTeachers(TeacherSearchVO search, Pageable pageable) {
+
         return convertToVO(teacherRepository.findAll(TeacherSpecification.searchByVO(search), pageable));
     }
 
     @Override
     public TeacherVO getTeacher(Integer id) {
+
         Teacher teacher = teacherRepository.findOne(id);
 
         if (teacher == null) {
@@ -52,16 +53,13 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void createTeacher(TeacherVO teacherVO) {
-        if (teacherRepository.findOne(teacherVO.getId()) != null) {
-            throw new BusinessException(" Profesorul cu id-ul " + teacherVO.getId() + " exista deja in baza de date! ");
-        }
-        else {
-            teacherRepository.save(teacherConvertor.fromVO(teacherVO));
-        }
+
+        teacherRepository.save(teacherConvertor.fromVO(teacherVO));
     }
 
     @Override
     public void updateTeacher(Integer id, TeacherVO teacherVO) {
+
         if (teacherRepository.findOne(id) == null) {
             throw new BusinessException(" Profesorul cu id-ul " + id + " nu exista in baza de date! ");
         }
@@ -72,6 +70,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void deleteTeacher(Integer id) {
+
         teacherRepository.delete(id);
     }
 }

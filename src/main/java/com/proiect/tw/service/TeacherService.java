@@ -12,14 +12,10 @@ import org.springframework.data.domain.Pageable;
 public interface TeacherService {
 
     Page<TeacherVO> getTeachers(Pageable pageable);
-
     Page<TeacherVO> getTeachers(TeacherSearchVO search, Pageable pageable);
-
     TeacherVO getTeacher(Integer id);
 
     void createTeacher(TeacherVO teacherVO);
-
     void updateTeacher(Integer id, TeacherVO teacherVO);
-
     void deleteTeacher(Integer id);
 }

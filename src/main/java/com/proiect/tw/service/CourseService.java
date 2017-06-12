@@ -12,22 +12,17 @@ import org.springframework.data.domain.Pageable;
  * Created by JACK on 4/21/2017.
  */
 public interface CourseService {
+
     Page<CourseVO> getCourses(Pageable pageable);
-
     Page<CourseVO> getCourses(CourseSearchVO searchVO, Pageable page);
-
     CourseVO getCourse(Integer id);
 
     void createCourse(CourseVO courseVO);
-
     void updateCourse(Integer id, CourseVO courseVO);
-
     void deleteCourse(Integer id);
 
 
     Page<BookVO> getBooksByCourse(Integer id_course, Pageable pageable);
-
     Page<DocVO> getDocsByCourse(Integer id_course, Pageable pageable);
-
     Page<ProjectVO> getProjectsByCourse(Integer id_course, Pageable pageable);
 }

@@ -11,7 +11,6 @@ import com.proiect.tw.repository.DocRepository;
 import com.proiect.tw.repository.ProjectRepository;
 import com.proiect.tw.repository.specification.CourseSpecification;
 import com.proiect.tw.service.CourseService;
-import com.proiect.tw.service.DocService;
 import com.proiect.tw.vo.BookVO;
 import com.proiect.tw.vo.CourseVO;
 import com.proiect.tw.vo.DocVO;
@@ -25,7 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by JACK on 4/21/2017.
@@ -74,13 +72,12 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<CourseVO> getCourses(Pageable pageable) {
+
         return convertToVO(courseRepository.findAll(pageable));
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<CourseVO> getCourses(CourseSearchVO search, Pageable pageable) {
 
         return convertToVO(courseRepository.findAll(CourseSpecification.searchByVO(search), pageable));
@@ -101,12 +98,7 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public void createCourse(CourseVO courseVO) {
 
-        if (courseRepository.findOne(courseVO.getId()) != null) {
-            throw new BusinessException(" Cursul cu id-ul " + courseVO.getId() + " exista deja in baza de date! ");
-        }
-        else {
-            courseRepository.save(courseConvertor.fromVO(courseVO));
-        }
+        courseRepository.save(courseConvertor.fromVO(courseVO));
     }
 
     @Override
@@ -122,6 +114,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public void deleteCourse(Integer id) {
+
         courseRepository.delete(id);
     }
 

@@ -26,6 +26,7 @@ public class ProjectServiceImpl implements ProjectService{
     private ProjectConvertor projectConvertor;
 
     private Page<ProjectVO> convertToVO(Page<Project> page) {
+
         return page.map(projectConvertor::toVO);
     }
 
@@ -56,12 +57,7 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public void createProject(ProjectVO projectVO) {
 
-        if (projectRepository.findOne(projectVO.getId()) != null) {
-            throw new BusinessException(" Proiectul cu id-ul " + projectVO.getId() + " exista deja in baza de date! ");
-        }
-        else {
-            projectRepository.save(projectConvertor.fromVO(projectVO));
-        }
+        projectRepository.save(projectConvertor.fromVO(projectVO));
     }
 
     @Override

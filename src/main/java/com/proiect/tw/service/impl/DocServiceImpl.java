@@ -26,6 +26,7 @@ public class DocServiceImpl implements DocService {
     private DocConvertor docConvertor;
 
     private Page<DocVO> convertToVO(Page<Doc> page) {
+
         return page.map(docConvertor::toVO);
     }
 
@@ -56,12 +57,7 @@ public class DocServiceImpl implements DocService {
     @Override
     public void createDoc(DocVO docVO) {
 
-        if (docRepository.findOne(docVO.getId()) != null) {
-            throw new BusinessException(" Documentul cu id-ul " + docVO.getId() + " exista deja in baza de date! ");
-        }
-        else {
-            docRepository.save(docConvertor.fromVO(docVO));
-        }
+        docRepository.save(docConvertor.fromVO(docVO));
     }
 
     @Override

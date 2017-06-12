@@ -57,12 +57,7 @@ public class BookServiceImpl implements BookService{
     @Override
     public void createBook(BookVO bookVO) {
 
-        if (bookRepository.findOne(bookVO.getId()) != null) {
-            throw new BusinessException(" Cartea cu id-ul " + bookVO.getId() + " exista deja in baza de date! ");
-        }
-        else {
-            bookRepository.save(bookConvertor.fromVO(bookVO));
-        }
+        bookRepository.save(bookConvertor.fromVO(bookVO));
     }
 
     @Override
