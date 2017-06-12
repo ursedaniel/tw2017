@@ -35,6 +35,13 @@
                 </span>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <lp-pagination [pager]="pager" (pageChanged)="handlePageChanged($event)"></lp-pagination>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

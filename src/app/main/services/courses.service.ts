@@ -34,20 +34,23 @@ export class CoursesService {
     return this.http.get(this.urlSearch,{search:this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
-  getBooks(courseId): Observable<JsonObject> {
-    return this.http.get(this.urlCourses + courseId + this.urlBooks).map((response: Response) => <JsonObject>response.json());
+  getBooks(courseId,searchParamas:SearchParams): Observable<JsonObject> {
+    this.setSearch(searchParamas);
+    return this.http.get(this.urlCourses + courseId + this.urlBooks,{search:this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
   getGossips(courseId): Observable<JsonObject> {
     return this.http.get(this.urlCourses + courseId + this.urlGossips).map((response: Response) => <JsonObject>response.json());
   }
 
-  getDocs(courseId): Observable<JsonObject> {
-    return this.http.get(this.urlCourses + courseId + this.urlDocs).map((response: Response) => <JsonObject>response.json());
+  getDocs(courseId,searchParamas:SearchParams): Observable<JsonObject> {
+    this.setSearch(searchParamas);
+    return this.http.get(this.urlCourses + courseId + this.urlDocs,{search:this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
-  getProjects(courseId): Observable<JsonObject> {
-    return this.http.get(this.urlCourses + courseId + this.urlProjects).map((response: Response) => <JsonObject>response.json());
+  getProjects(courseId,searchParamas:SearchParams): Observable<JsonObject> {
+    this.setSearch(searchParamas);
+    return this.http.get(this.urlCourses + courseId + this.urlProjects,{search:this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
 

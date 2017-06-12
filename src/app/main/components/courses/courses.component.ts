@@ -54,7 +54,6 @@ export class CoursesComponent implements OnInit {
   handlePageChanged(data) {
     this.searchParamas.page = this.pager.page;
     this.searchParamas.size = this.pager.rows;
-    console.log(this.searchParamas);
     this.getCourses();
   }
 
