@@ -24,15 +24,15 @@ public class DocSpecification {
                 List<Predicate> predicates = new ArrayList<>();
 
                 if (docSearchVO.getTitle() != null) {
-                    predicates.add(cb.like(root.get("name"), "%" + docSearchVO.getTitle().toLowerCase() + "%"));
+                    predicates.add(cb.like(root.get("title"), "%" + docSearchVO.getTitle().toLowerCase() + "%"));
                     if (docSearchVO.isMatch()) {
-                        predicates.add(cb.equal(root.get("name"), docSearchVO.getTitle().toLowerCase()));
+                        predicates.add(cb.equal(root.get("title"), docSearchVO.getTitle().toLowerCase()));
                     }
                     if (!docSearchVO.isMatch()) {
-                        predicates.add(cb.like(root.get("name"), "%" + docSearchVO.getTitle().toLowerCase() + "%"));
+                        predicates.add(cb.like(root.get("title"), "%" + docSearchVO.getTitle().toLowerCase() + "%"));
                     }
                     if (docSearchVO.isStartWith()) {
-                        predicates.add(cb.like(root.get("name"), docSearchVO.getTitle().toLowerCase() + "%"));
+                        predicates.add(cb.like(root.get("title"), docSearchVO.getTitle().toLowerCase() + "%"));
                     }
                 }
                 return cb.and(predicates.toArray(new Predicate[0]));

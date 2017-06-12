@@ -7,6 +7,7 @@ public class CourseSearchVO extends DefaultSearchVO{
 
     private String name;
     private Integer year;
+    private String main_teacher;
 
     public String getName() {
         return name;
@@ -20,5 +21,12 @@ public class CourseSearchVO extends DefaultSearchVO{
     }
     public void setYear(Integer year) {
         this.year = year;
+    }
+
+    public String getMain_teacher() {
+        return main_teacher;
+    }
+    public void setMain_teacher(String main_teacher) {
+        this.main_teacher = main_teacher;
     }
 }

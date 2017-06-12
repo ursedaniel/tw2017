@@ -6,6 +6,7 @@ package com.proiect.tw.vo.search;
 public class TeacherSearchVO extends DefaultSearchVO{
 
     private String name;
+    private Integer rating;
 
     public String getName() {
         return name;
@@ -14,4 +15,10 @@ public class TeacherSearchVO extends DefaultSearchVO{
         this.name = name;
     }
 
+    public Integer getRating() {
+        return rating;
+    }
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
 }

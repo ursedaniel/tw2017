@@ -24,15 +24,39 @@ public class BookSpecification {
                 List<Predicate> predicates = new ArrayList<>();
 
                 if (bookSearchVO.getTitle() != null) {
-                    predicates.add(cb.like(root.get("name"), "%" + bookSearchVO.getTitle().toLowerCase() + "%"));
+                    predicates.add(cb.like(root.get("title"), "%" + bookSearchVO.getTitle().toLowerCase() + "%"));
                     if (bookSearchVO.isMatch()) {
-                        predicates.add(cb.equal(root.get("name"), bookSearchVO.getTitle().toLowerCase()));
+                        predicates.add(cb.equal(root.get("title"), bookSearchVO.getTitle().toLowerCase()));
                     }
                     if (!bookSearchVO.isMatch()) {
-                        predicates.add(cb.like(root.get("name"), "%" + bookSearchVO.getTitle().toLowerCase() + "%"));
+                        predicates.add(cb.like(root.get("title"), "%" + bookSearchVO.getTitle().toLowerCase() + "%"));
                     }
                     if (bookSearchVO.isStartWith()) {
-                        predicates.add(cb.like(root.get("name"), bookSearchVO.getTitle().toLowerCase() + "%"));
+                        predicates.add(cb.like(root.get("title"), bookSearchVO.getTitle().toLowerCase() + "%"));
+                    }
+                }
+                if (bookSearchVO.getAuthor() != null) {
+                    predicates.add(cb.like(root.get("author"), "%" + bookSearchVO.getAuthor().toLowerCase() + "%"));
+                    if (bookSearchVO.isMatch()) {
+                        predicates.add(cb.equal(root.get("author"), bookSearchVO.getAuthor().toLowerCase()));
+                    }
+                    if (!bookSearchVO.isMatch()) {
+                        predicates.add(cb.like(root.get("author"), "%" + bookSearchVO.getAuthor().toLowerCase() + "%"));
+                    }
+                    if (bookSearchVO.isStartWith()) {
+                        predicates.add(cb.like(root.get("author"), bookSearchVO.getAuthor().toLowerCase() + "%"));
+                    }
+                }
+                if (bookSearchVO.getLocation() != null) {
+                    predicates.add(cb.like(root.get("location"), "%" + bookSearchVO.getLocation().toLowerCase() + "%"));
+                    if (bookSearchVO.isMatch()) {
+                        predicates.add(cb.equal(root.get("location"), bookSearchVO.getLocation().toLowerCase()));
+                    }
+                    if (!bookSearchVO.isMatch()) {
+                        predicates.add(cb.like(root.get("location"), "%" + bookSearchVO.getLocation().toLowerCase() + "%"));
+                    }
+                    if (bookSearchVO.isStartWith()) {
+                        predicates.add(cb.like(root.get("location"), bookSearchVO.getLocation().toLowerCase() + "%"));
                     }
                 }
                 return cb.and(predicates.toArray(new Predicate[0]));

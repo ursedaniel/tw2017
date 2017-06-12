@@ -5,20 +5,12 @@ import com.proiect.tw.model.Book;
 import com.proiect.tw.model.Course;
 import com.proiect.tw.model.Doc;
 import com.proiect.tw.model.Project;
-import com.proiect.tw.repository.BookRepository;
-import com.proiect.tw.repository.CourseRepository;
-import com.proiect.tw.repository.DocRepository;
-import com.proiect.tw.repository.ProjectRepository;
+import com.proiect.tw.model.Gossip;
+import com.proiect.tw.repository.*;
 import com.proiect.tw.repository.specification.CourseSpecification;
 import com.proiect.tw.service.CourseService;
-import com.proiect.tw.vo.BookVO;
-import com.proiect.tw.vo.CourseVO;
-import com.proiect.tw.vo.DocVO;
-import com.proiect.tw.vo.ProjectVO;
-import com.proiect.tw.vo.convertor.BookConvertor;
-import com.proiect.tw.vo.convertor.CourseConvertor;
-import com.proiect.tw.vo.convertor.DocConvertor;
-import com.proiect.tw.vo.convertor.ProjectConvertor;
+import com.proiect.tw.vo.*;
+import com.proiect.tw.vo.convertor.*;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -55,6 +47,12 @@ public class CourseServiceImpl implements CourseService{
     @Autowired
     private ProjectConvertor projectConvertor;
 
+    @Autowired
+    private GossipRepository gossipRepository;
+
+    @Autowired
+    private GossipConvertor gossipConvertor;
+
     private Page<CourseVO> convertToVO(Page<Course> page) {
         return page.map(courseConvertor::toVO);
     }
@@ -65,6 +63,10 @@ public class CourseServiceImpl implements CourseService{
 
     private Page<DocVO> convertToVODocs(Page<Doc> page) {
         return page.map(docConvertor::toVO);
+    }
+
+    private Page<GossipVO> convertToVOGossips(Page<Gossip> page) {
+        return page.map(gossipConvertor::toVO);
     }
 
     private Page<ProjectVO> convertToVOProjects(Page<Project> page) {
@@ -134,5 +136,11 @@ public class CourseServiceImpl implements CourseService{
     public Page<ProjectVO> getProjectsByCourse(Integer id_course, Pageable pageable) {
 
         return convertToVOProjects(projectRepository.getProjectsByQuery(id_course, pageable));
+    }
+
+    @Override
+    public Page<GossipVO> getGossipsByCourse(Integer id_course, Pageable pageable) {
+
+        return convertToVOGossips(gossipRepository.getGossipsByQuery(id_course, pageable));
     }
 }

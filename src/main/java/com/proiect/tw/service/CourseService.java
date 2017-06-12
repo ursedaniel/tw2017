@@ -1,9 +1,6 @@
 package com.proiect.tw.service;
 
-import com.proiect.tw.vo.BookVO;
-import com.proiect.tw.vo.CourseVO;
-import com.proiect.tw.vo.DocVO;
-import com.proiect.tw.vo.ProjectVO;
+import com.proiect.tw.vo.*;
 import com.proiect.tw.vo.search.CourseSearchVO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,8 +18,8 @@ public interface CourseService {
     void updateCourse(Integer id, CourseVO courseVO);
     void deleteCourse(Integer id);
 
-
     Page<BookVO> getBooksByCourse(Integer id_course, Pageable pageable);
     Page<DocVO> getDocsByCourse(Integer id_course, Pageable pageable);
     Page<ProjectVO> getProjectsByCourse(Integer id_course, Pageable pageable);
+    Page<GossipVO> getGossipsByCourse(Integer id_course, Pageable pageable);
 }

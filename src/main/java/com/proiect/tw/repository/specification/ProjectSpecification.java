@@ -24,15 +24,15 @@ public class ProjectSpecification {
                 List<Predicate> predicates = new ArrayList<>();
 
                 if (projectSearchVO.getTitle() != null) {
-                    predicates.add(cb.like(root.get("name"), "%" + projectSearchVO.getTitle().toLowerCase() + "%"));
+                    predicates.add(cb.like(root.get("title"), "%" + projectSearchVO.getTitle().toLowerCase() + "%"));
                     if (projectSearchVO.isMatch()) {
-                        predicates.add(cb.equal(root.get("name"), projectSearchVO.getTitle().toLowerCase()));
+                        predicates.add(cb.equal(root.get("title"), projectSearchVO.getTitle().toLowerCase()));
                     }
                     if (!projectSearchVO.isMatch()) {
-                        predicates.add(cb.like(root.get("name"), "%" + projectSearchVO.getTitle().toLowerCase() + "%"));
+                        predicates.add(cb.like(root.get("title"), "%" + projectSearchVO.getTitle().toLowerCase() + "%"));
                     }
                     if (projectSearchVO.isStartWith()) {
-                        predicates.add(cb.like(root.get("name"), projectSearchVO.getTitle().toLowerCase() + "%"));
+                        predicates.add(cb.like(root.get("title"), projectSearchVO.getTitle().toLowerCase() + "%"));
                     }
                 }
                 return cb.and(predicates.toArray(new Predicate[0]));
