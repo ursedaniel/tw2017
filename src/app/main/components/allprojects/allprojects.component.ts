@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Project} from "../../interfaces/Project";
+import {PagerObject} from "../../interfaces/PagerObject";
+import {SearchParams} from "../../interfaces/SearchParams";
+import {ProjectsService} from "../../services/projects.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'acar-allprojects',
@@ -8,23 +12,49 @@ import {Project} from "../../interfaces/Project";
 })
 export class AllprojectsComponent implements OnInit {
 
-  projects: Array<Project> = [
-    new Project(1,"Proiect 1","Mica descriere","proiect1.zip"),
-    new Project(2,"Proiect 2","Mica descriere","proiect2.zip"),
-    new Project(3,"Proiect 3","Mica descriere","proiect3.zip"),
-    new Project(4,"Proiect 4","Mica descriere","proiect4.zip"),
-    new Project(5,"Proiect 5","Mica descriere","proiect5.zip"),
-    new Project(7,"Proiect 7","Mica descriere","proiect7.zip"),
-    new Project(8,"Proiect 8","Mica descriere","proiect8.zip"),
-    new Project(12,"Proiect 12","Mica descriere","proiect12.zip"),
-    new Project(13,"Proiect 13","Mica descriere","proiect13.zip"),
-    new Project(15,"Proiect 15","Mica descriere","proiect15.zip")
-  ];
+  projects: any;
+  @ViewChild('nameFilter') filterInput: any;
+  private filterObs: any;
+  private pager: PagerObject = new PagerObject();
+  private searchParamas: SearchParams = new SearchParams();
+  private searchObject: Project = new Project();
 
-
-  constructor() { }
+  constructor(private projectsService: ProjectsService) { }
 
   ngOnInit() {
+    this.getProjects();
+    this.filterObs = Observable.fromEvent(this.filterInput.nativeElement, 'keyup')
+      .debounceTime(500)
+      .map(response => this.filterInput.nativeElement.value)
+      .subscribe((value) => {
+        this.searchObject.title = value;
+        this.searchParamas.search = this.searchObject;
+        this.getProjectsFiltered();
+      });
+  }
+
+  getProjects() {
+    this.projectsService.getProjects(this.searchParamas).subscribe(
+      (response) => {
+        this.projects = response.content;
+        this.pager.totalPages = response.totalPages;
+        this.pager.totalElements = response.totalElements;
+      }
+    );
+  }
+
+  getProjectsFiltered() {
+    this.projectsService.getFilteredProjects(this.searchParamas).subscribe(
+      (response) => {
+        this.projects = response.content;
+      }
+    );
+  }
+
+  handlePageChanged(data) {
+    this.searchParamas.page = this.pager.page;
+    this.searchParamas.size = this.pager.rows;
+    this.getProjects();
   }
 
 }

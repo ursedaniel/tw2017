@@ -30,6 +30,9 @@ import { AllprojectsComponent } from './main/components/allprojects/allprojects.
 import { AlldocumentsComponent } from './main/components/alldocuments/alldocuments.component';
 import { NavbarComponent } from './common/components/navbar/navbar.component';
 import {PaginationComponent} from "./common/components/pagination/pagination.component";
+import {BooksService} from "./main/services/books.service";
+import {ProjectsService} from "./main/services/projects.service";
+import {DocsService} from "./main/services/docs.service";
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import {PaginationComponent} from "./common/components/pagination/pagination.com
   ],
   providers: [
     CoursesService,
-    TeachersService
+    TeachersService,
+    BooksService,
+    ProjectsService,
+    DocsService
   ],
   bootstrap: [AppComponent]
 })

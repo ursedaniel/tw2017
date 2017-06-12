@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Doc} from "../../interfaces/Doc";
+import {PagerObject} from "../../interfaces/PagerObject";
+import {SearchParams} from "../../interfaces/SearchParams";
+import {Observable} from "rxjs";
+import {DocsService} from "../../services/docs.service";
 
 @Component({
   selector: 'acar-alldocuments',
@@ -8,29 +12,48 @@ import {Doc} from "../../interfaces/Doc";
 })
 export class AlldocumentsComponent implements OnInit {
 
-  docs: Array<Doc> = [
-    new Doc(1,"Document 1","www.document1.ro"),
-    new Doc(2,"Document 2","www.document2.ro"),
-    new Doc(3,"Document 3","www.document3.ro"),
-    new Doc(4,"Document 4","www.document4.ro"),
-    new Doc(5,"Document 5","www.document5.ro"),
-    new Doc(8,"Document 8","www.document8.ro"),
-    new Doc(12,"Document 12","www.document12.ro"),
-    new Doc(17,"Document 17","www.document17.ro"),
-    new Doc(24,"Document 24","www.document24.ro"),
-    new Doc(35,"Document 35","www.document35.ro"),
-    new Doc(44,"Document 4","www.document44.ro"),
-    new Doc(55,"Document 5","www.document55.ro"),
-    new Doc(68,"Document 8","www.document88.ro"),
-    new Doc(112,"Document 12","www.document112.ro"),
-    new Doc(117,"Document 17","www.document117.ro"),
-    new Doc(224,"Document 24","www.document224.ro"),
-    new Doc(335,"Document 35","www.document335.ro")
-  ];
+  docs: any;
+  @ViewChild('nameFilter') filterInput: any;
+  private filterObs: any;
+  private pager: PagerObject = new PagerObject();
+  private searchParamas: SearchParams = new SearchParams();
+  private searchObject: Doc = new Doc();
 
-  constructor() { }
+  constructor(private docsService: DocsService) { }
 
   ngOnInit() {
+    this.getDocs();
+    this.filterObs = Observable.fromEvent(this.filterInput.nativeElement, 'keyup')
+      .debounceTime(500)
+      .map(response => this.filterInput.nativeElement.value)
+      .subscribe((value) => {
+        this.searchObject.title = value;
+        this.searchParamas.search = this.searchObject;
+        this.getDocsFiltered();
+      });
   }
 
+  getDocs() {
+    this.docsService.getDocs(this.searchParamas).subscribe(
+      (response) => {
+        this.docs = response.content;
+        this.pager.totalPages = response.totalPages;
+        this.pager.totalElements = response.totalElements;
+      }
+    );
+  }
+
+  getDocsFiltered() {
+    this.docsService.getFilteredDocs(this.searchParamas).subscribe(
+      (response) => {
+        this.docs = response.content;
+      }
+    );
+  }
+
+  handlePageChanged(data) {
+    this.searchParamas.page = this.pager.page;
+    this.searchParamas.size = this.pager.rows;
+    this.getDocs();
+  }
 }

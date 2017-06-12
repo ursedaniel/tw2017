@@ -6,11 +6,4 @@ export class Project {
   title: string;
   content: string;
   file: string;
-
-  constructor(id, title, content, file) {
-    this.id = id;
-    this.title = title;
-    this.content = content;
-    this.file = file;
-  }
 }

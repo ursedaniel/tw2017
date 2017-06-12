@@ -12,8 +12,18 @@
                 <thead>
                 <tr>
                   <th colspan="11">
-                    Filtru dupa nume:
-                    <input #nameFilter class="form-control"/>
+                    <div class="col-lg-4">
+                      Filtru dupa titlu:
+                      <input class="form-control" #titleFilter/>
+                    </div>
+                    <div class="col-lg-4">
+                      Filtru dupa autor:
+                      <input class="form-control" #authorFilter/>
+                    </div>
+                    <div class="col-lg-4">
+                      Filtru dupa locatie:
+                      <input class="form-control" #locationFilter/>
+                    </div>
                   </th>
                 </tr>
                 </thead>
@@ -41,6 +51,13 @@
                 </span>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <lp-pagination [pager]="pager" (pageChanged)="handlePageChanged($event)"></lp-pagination>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

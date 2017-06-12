@@ -3,7 +3,7 @@
  */
 export class SearchParams{
   page:number = 0;
-  size:number = 10;
+  size:number = 12;
   sort:Array<string> = ["id","asc"];
   search:any;
 }

@@ -1,6 +1,6 @@
 <div id="page-wrapper">
   <div class="row wrapper border-bottom white-bg page-heading animated fadeInDown">
-    <h2>Carti</h2>
+    <h2>Documente</h2>
   </div>
   <div class="wrapper wrapper-content ">
     <div class="row">
@@ -12,7 +12,7 @@
                 <thead>
                 <tr>
                   <th colspan="11">
-                    Filtru dupa nume:
+                    Filtru dupa titlu:
                     <input #nameFilter class="form-control"/>
                   </th>
                 </tr>
@@ -39,7 +39,15 @@
                 </span>
                 </div>
               </div>
-          </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <lp-pagination [pager]="pager" (pageChanged)="handlePageChanged($event)"></lp-pagination>
+                </div>
+              </div>
+
+
+            </div>
         </div>
       </div>
     </div>

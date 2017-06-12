@@ -4,24 +4,22 @@
 
 .boxes-orange {
   text-align:center;
-  height: 140px;
+  height: 160px;
   background-color: #F79835;
   margin-bottom:60px;
   border-right:5px white solid;
   border-left:5px white solid;
-  padding:5px;
   padding-top: 60px;
   color: black;
 }
 
 .boxes-blue {
   text-align:center;
-  height: 140px;
+  height: 160px;
   background-color: #2f4050;
   margin-bottom:60px;
   border-right:5px white solid;
   border-left:5px white solid;
-  padding:5px;
   padding-top: 60px;
   color:white;
 }

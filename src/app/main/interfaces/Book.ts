@@ -6,11 +6,4 @@ export class Book {
   title: string;
   author: string;
   location: string;
-
-  constructor(id, title, author, location) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.location = location;
-  }
 }

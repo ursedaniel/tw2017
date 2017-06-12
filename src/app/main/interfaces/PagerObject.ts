@@ -3,8 +3,8 @@
  */
 export class PagerObject {
   page:number = 0;
-  rows:number = 10;
+  rows:number = 12;
   totalElements:number=0;
   totalPages:number=0;
-  chooseRowsOnPage:Array<number>=[1,10,30];
+  chooseRowsOnPage:Array<number>=[1,6,12,18,36];
 }

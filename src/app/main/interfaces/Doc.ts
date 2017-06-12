@@ -6,9 +6,4 @@ export class Doc {
   title: string;
   link: string;
 
-  constructor(id, title, link) {
-    this.id = id;
-    this.title = title;
-    this.link = link;
-  }
 }
