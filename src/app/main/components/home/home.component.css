@@ -5,6 +5,8 @@
   padding-bottom: 60px;
   background-image: url("../../../../assets/pattern-light.png") !important;
   height: 100vh;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .aligned-text {
@@ -108,7 +110,7 @@
 
 .home-i:hover i{
   transform: rotate(360deg);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s;
 }
 
 .icon-home {
@@ -130,6 +132,7 @@
 .home-text {
   color:white;
 }
+
 
 .logo {
   width:6%;
