@@ -4,7 +4,9 @@
 export class Schedule {
   id: number;
   teacher_id: number;
+  teacher_name: string;
   course_id: number;
+  course_name: string;
   day: string;
   class_room: string;
   starting_at: string;

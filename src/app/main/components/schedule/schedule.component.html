@@ -31,19 +31,19 @@
                 </tr>
                 <tr>
                   <th width="17%"><a >Curs</a></th>
-                  <th width="8%"><a >Profesor</a></th>
-                  <th width="8%"><a >Zi</a></th>
-                  <th width="5%"><a >Sala</a></th>
-                  <th width="17%"><a >Inceput</a></th>
-                  <th width="10%"><a >Sfarsit</a></th>
-                  <th width="10%"><a >Grupa</a></th>
+                  <th width="17%"><a >Profesor</a></th>
+                  <th width="10%"><a >Zi</a></th>
+                  <th width="10%"><a >Sala</a></th>
+                  <th width="5%"><a >Inceput</a></th>
+                  <th width="5%"><a >Sfarsit</a></th>
+                  <th width="5%"><a >Grupa</a></th>
                   <th width="10%"><a >Tip</a></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="gradeX" *ngFor="let sch of schedule">
-                  <td>{{sch.course_id}}</td>
-                  <td>{{sch.teacher_id}}</td>
+                  <td>{{sch.course_name}}</td>
+                  <td>{{sch.teacher_name}}</td>
                   <td>{{sch.day}}</td>
                   <td>{{sch.class_room}}</td>
                   <td>{{sch.starting_at}}</td>

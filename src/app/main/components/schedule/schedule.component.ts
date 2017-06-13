@@ -4,6 +4,8 @@ import {PagerObject} from "../../interfaces/PagerObject";
 import {SearchParams} from "../../interfaces/SearchParams";
 import {Schedule} from "../../interfaces/Schedule";
 import {Observable} from "rxjs";
+import {CoursesService} from "../../services/courses.service";
+import {TeachersService} from "../../services/teachers.service";
 
 @Component({
   selector: 'acar-schedule',
@@ -23,10 +25,11 @@ export class ScheduleComponent implements OnInit {
   private searchParamas: SearchParams = new SearchParams();
   private searchObject: Schedule = new Schedule();
 
-  constructor(private scheduleService: ScheduleService) { }
+  constructor(private scheduleService: ScheduleService, private coursesService: CoursesService, private teachersService: TeachersService) {
+  }
 
   ngOnInit() {
-    this.getSchedule()
+    this.getSchedule();
     this.filterObs = Observable.fromEvent(this.filterInput.nativeElement, 'keyup')
       .debounceTime(500)
       .map(response => this.filterInput.nativeElement.value)
@@ -57,6 +60,19 @@ export class ScheduleComponent implements OnInit {
     this.scheduleService.getSchedule(this.searchParamas).subscribe(
       (response) => {
         this.schedule = response.content;
+        for (let i = 0; i < this.schedule.length; i++) {
+          this.coursesService.getCourse(this.schedule[i].course_id).subscribe(
+            (response) => {
+              this.schedule[i].course_name = response.name;
+            }
+          );
+
+          this.teachersService.getTeacher(this.schedule[i].teacher_id).subscribe(
+            (response) => {
+              this.schedule[i].teacher_name = response.name;
+            }
+          );
+        }
         this.pager.totalPages = response.totalPages;
         this.pager.totalElements = response.totalElements;
       }
@@ -67,6 +83,18 @@ export class ScheduleComponent implements OnInit {
     this.scheduleService.getFilteredSchedule(this.searchParamas).subscribe(
       (response) => {
         this.schedule = response.content;
+        for (let i = 0; i < this.schedule.length; i++) {
+          this.coursesService.getCourse(this.schedule[i].course_id).subscribe(
+            (response) => {
+              this.schedule[i].course_name = response.name;
+            }
+          );
+          this.teachersService.getTeacher(this.schedule[i].teacher_id).subscribe(
+            (response) => {
+              this.schedule[i].teacher_name = response.name;
+            }
+          );
+        }
         this.pager.totalPages = response.totalPages;
         this.pager.totalElements = response.totalElements;
       }
