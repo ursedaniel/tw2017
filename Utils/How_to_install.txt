@@ -1,0 +1,19 @@
+Pentru a instala AcaR trebuie sa:
+
+BACK-END
+1.Asigurativa ca aveti suficient spatiu pe disk si ca aveti conexiune la internet
+2.Descarcati fisierele frontend si backend de pe repo
+3.Deschideti fisierul backend cu un IDE (IntelliJ IDEA, Eclipse, Netbeans)
+4.Proiectul fiind facut cu maven, asteptati pentru jar-uri sa se downloadeze
+5.Cand a terminat de facut download dati pe "Run 'ProiectTwApplication'" din dreapta sus sau apsati combinatia de taste SHIFT + F10
+6.Asteptati pana ce serverul este up
+
+FRONT-END
+7.Instalati ultima versiune de Node.JS de pe site-ul oficial.
+8.Scrieti in cmd: npm install g --save @angular/cli pentru a instala ultima versiune de angular.
+9.Scrieti in cmd: npm new "Numeproiect" pentru a instala noul proiect angular
+10. Copiati fisierele pentru front-end de pe repo in proiectul nou de angular instalat.
+11. Intrati din cmd in folderul proiectului Angular si scrieti comanda: npm install --save ng2-bs3-modal pt a instala pluginul de ferestre modale
+12. Deschideti proiectul cu un compilator, de ex: Webstorm, IntelliJ si rulati proiectul folosind comanda npm serve
+13. Conectati-va pe browser folosind comanda: localhost:80 sau depinde de portul folosit in momentul rularii aplicatiei.
+

@@ -1,0 +1,11 @@
+repo:https://github.com/ursedaniel/tw2017
+
+Formatul commiturilor:
+
+Fiecare commit incapsuleaza o functionalitate.
+Mesajul commiturilor este scurt si la obiect.
+
+Contribuitori:
+
+Alexandrescu Aurelian
+Urse Daniel

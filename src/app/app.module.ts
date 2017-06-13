@@ -26,7 +26,6 @@ import { TeacherdetailComponent } from './main/components/teachers/teacherdetail
 import { TeacherinfoComponent } from './main/components/teachers/teacherdetail/teacherinfo/teacherinfo.component';
 import { TeachergossipsComponent } from './main/components/teachers/teacherdetail/teachergossips/teachergossips.component';
 import { CoursegossipsComponent } from './main/components/courses/coursedetail/coursegossips/coursegossips.component';
-import { CoursegradesComponent } from './main/components/courses/coursedetail/coursegrades/coursegrades.component';
 import { AllprojectsComponent } from './main/components/allprojects/allprojects.component';
 import { AlldocumentsComponent } from './main/components/alldocuments/alldocuments.component';
 import { NavbarComponent } from './common/components/navbar/navbar.component';
@@ -62,8 +61,6 @@ import { AddteachergossipComponent } from './main/components/teachers/teacherdet
     TeacherinfoComponent,
     TeachergossipsComponent,
     CoursegossipsComponent,
-    CoursegradesComponent,
-    CoursegradesComponent,
     AllprojectsComponent,
     AlldocumentsComponent,
     NavbarComponent,
