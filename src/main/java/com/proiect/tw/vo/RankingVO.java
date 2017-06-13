@@ -10,13 +10,13 @@ import javax.persistence.criteria.CriteriaBuilder;
 public class RankingVO {
 
     Integer id;
-    Integer id_user;
+    String id_user;
     Integer teacher_id;
     Integer grade;
 
     public RankingVO() {}
 
-    public RankingVO(Integer id, Integer id_user, Integer teacher_id, Integer grade) {
+    public RankingVO(Integer id, String id_user, Integer teacher_id, Integer grade) {
         this.id = id;
         this.id_user = id_user;
         this.teacher_id = teacher_id;
@@ -31,11 +31,11 @@ public class RankingVO {
         this.id = id;
     }
 
-    public Integer getId_user() {
+    public String getId_user() {
         return id_user;
     }
 
-    public void setId_user(Integer id_user) {
+    public void setId_user(String id_user) {
         this.id_user = id_user;
     }
 

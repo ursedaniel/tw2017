@@ -73,6 +73,7 @@ public class TeacherController {
         return teacherService.getGossipsByTeacher(id_teacher,pageable);
     }
 
+    //POST RANK TO A TEACHER
     @RequestMapping(value = "/teachers/{id_teacher}/ranking", method = RequestMethod.POST)
     public void createRanking(@RequestBody RankingVO rankingVO) {
 

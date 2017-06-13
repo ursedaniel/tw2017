@@ -7,23 +7,23 @@ import javax.jws.soap.SOAPBinding;
  */
 public class UserVO {
 
-    Integer id;
+    String id;
     String name;
     String role;
 
     public UserVO() {}
 
-    public UserVO(Integer id, String name, String role) {
+    public UserVO(String id, String name, String role) {
         this.id = id;
         this.name = name;
         this.role = role;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

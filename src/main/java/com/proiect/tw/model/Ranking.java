@@ -10,13 +10,13 @@ import javax.persistence.*;
 public class Ranking {
 
     Integer id;
-    Integer id_user;
+    String id_user;
     Integer teacher_id;
     Integer grade;
 
     public Ranking() {}
 
-    public Ranking(Integer id, Integer id_user, Integer teacher_id, Integer grade) {
+    public Ranking(Integer id, String id_user, Integer teacher_id, Integer grade) {
         this.id = id;
         this.id_user = id_user;
         this.teacher_id = teacher_id;
@@ -34,10 +34,10 @@ public class Ranking {
     }
 
     @Column(name = "ID_USER")
-    public Integer getId_user() {
+    public String getId_user() {
         return id_user;
     }
-    public void setId_user(Integer id_user) {
+    public void setId_user(String id_user) {
         this.id_user = id_user;
     }
 

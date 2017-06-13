@@ -13,7 +13,7 @@ public interface RankingRepository extends JpaRepository<Ranking, Integer> {
     Ranking findByTeacherid(Integer teacher_id);
 
     @Query("select r from Ranking r where r.teacher_id = ?1 and r.id_user = ?2")
-    Ranking getIdByUser(Integer teacher_id, Integer id_user);
+    Ranking getIdByUser(Integer teacher_id, String id_user);
 
     @Query("select count(r.id) from Ranking r where r.teacher_id = ?1")
     Integer getTotalRating(Integer teacher_id);
@@ -22,5 +22,5 @@ public interface RankingRepository extends JpaRepository<Ranking, Integer> {
     Integer getSumRating(Integer teacher_id);
 
     @Query("select r from Ranking r where r.id_user = ?1")
-    Ranking findByIdUser(Integer id);
+    Ranking findByIdUser(String id);
 }

@@ -12,5 +12,5 @@ import javax.jws.soap.SOAPBinding;
  */
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    User findById(Integer id);
+    User findById(String id);
 }

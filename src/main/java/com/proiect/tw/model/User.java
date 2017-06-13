@@ -9,13 +9,13 @@ import javax.persistence.*;
 @Table(name ="USERS")
 public class User {
 
-    Integer id;
+    String id;
     String name;
     String role;
 
     public User() {}
 
-    public User(Integer id, String name, String role) {
+    public User(String id, String name, String role) {
         this.id = id;
         this.name = name;
         this.role = role;
@@ -23,10 +23,10 @@ public class User {
 
     @Id
     @Column(name = "ID")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
