@@ -36,15 +36,9 @@ public class CourseSpecification {
                     }
                 }
                 if (courseSearchVO.getYear() != null) {
-                    predicates.add(cb.like(root.get("year"), "%" + courseSearchVO.getYear() + "%"));
+                    predicates.add(cb.equal(root.get("year"), courseSearchVO.getYear()));
                     if (courseSearchVO.isMatch()) {
                         predicates.add(cb.equal(root.get("year"), courseSearchVO.getYear()));
-                    }
-                    if (!courseSearchVO.isMatch()) {
-                        predicates.add(cb.like(root.get("year"), "%" + courseSearchVO.getYear() + "%"));
-                    }
-                    if (courseSearchVO.isStartWith()) {
-                        predicates.add(cb.like(root.get("year"), courseSearchVO.getYear() + "%"));
                     }
                 }
                 if (courseSearchVO.getMain_teacher() != null) {

@@ -19,36 +19,42 @@ public class GossipController {
     @Autowired
     private GossipService gossipService;
 
+    //GET ALL DOCS
     @RequestMapping("/gossips")
     public Page<GossipVO> getGossips(Pageable pageable) {
 
         return gossipService.getGossips(pageable);
     }
 
+    //GET ALL GOSSIPS BY TITLE
     @RequestMapping(value = "/gossips/search")
     public Page<GossipVO> searchGossips(@ModelAttribute GossipSearchVO searchVO, Pageable page) {
 
         return gossipService.getGossips(searchVO, page);
     }
 
+    //GET GOSSIP BY ID
     @RequestMapping("/gossips/{id}")
     public GossipVO getGossip(@PathVariable("id") Integer id) {
 
         return gossipService.getGossip(id);
     }
 
+    //CREATE A NEW GOSSIP
     @RequestMapping(value = "/gossips", method = RequestMethod.POST)
     public void createGossip(@RequestBody GossipVO gossipVO) {
 
         gossipService.createGossip(gossipVO);
     }
 
+    //UPDATE AN EXISTING GOSSIP
     @RequestMapping(value = "/gossips/{id}", method = RequestMethod.PUT)
     public void updateGossip(@PathVariable("id") Integer id, @RequestBody GossipVO gossipVO) {
 
         gossipService.updateGossip(id, gossipVO);
     }
 
+    //DELETE A GOSSIP
     @RequestMapping(value = "/gossips/{id}", method = RequestMethod.DELETE)
     public void deleteGossip(@PathVariable("id") Integer id) {
 

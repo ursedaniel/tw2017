@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUser(UserVO userVO) {
 
-        if (userRepository.findByEmail(userVO.getEmail()) == null) {
+        if (userRepository.findById(userVO.getId()) == null) {
             userRepository.save(userConvertor.fromVO(userVO));
         }
     }

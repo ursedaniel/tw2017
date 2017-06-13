@@ -11,20 +11,17 @@ public class User {
 
     Integer id;
     String name;
-    String email;
     String role;
 
     public User() {}
 
-    public User(Integer id, String name, String email, String role) {
+    public User(Integer id, String name, String role) {
         this.id = id;
         this.name = name;
-        this.email = email;
         this.role = role;
     }
 
     @Id
-    @GeneratedValue
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -41,13 +38,6 @@ public class User {
         this.name = name;
     }
 
-    @Column(name = "EMAIL")
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @Column(name = "ROLE")
     public String getRole() {

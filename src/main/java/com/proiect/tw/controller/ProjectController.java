@@ -22,42 +22,49 @@ public class ProjectController {
     @Autowired
     private ProjectUpload projectUpload;
 
+    //GET ALL PROJECTS
     @RequestMapping("/projects")
     public Page<ProjectVO> getProjects(Pageable pageable) {
 
         return projectService.getProjects(pageable);
     }
 
+    //GET ALL PROJECTS BY TITLE
     @RequestMapping(value = "/projects/search")
     public Page<ProjectVO> searchProjects(@ModelAttribute ProjectSearchVO searchVO, Pageable page) {
 
         return projectService.getProjects(searchVO, page);
     }
 
+    //GET PROJECT BY ID
     @RequestMapping("/projects/{id}")
     public ProjectVO getProject(@PathVariable("id") Integer id) {
 
         return projectService.getProject(id);
     }
 
+    //CREATE A NEW PROJECT
     @RequestMapping(value = "/projects", method = RequestMethod.POST)
     public void createProject(@RequestBody ProjectVO projectVO) {
 
         projectService.createProject(projectVO);
     }
 
+    //UPDATE AN EXISTING PROJECT
     @RequestMapping(value = "/projects/{id}", method = RequestMethod.PUT)
     public void updateProject(@PathVariable("id") Integer id, @RequestBody ProjectVO projectVO) {
 
         projectService.updateProject(id, projectVO);
     }
 
+    //DELETE A PROJECT
     @RequestMapping(value = "/projects/{id}", method = RequestMethod.DELETE)
     public void deleteProject(@PathVariable("id") Integer id) {
 
         projectService.deleteProject(id);
     }
 
+    //UPLOAD A FILE TO A PROJECT
     @RequestMapping(value = "/projects/{id_proj}/upload", method=RequestMethod.POST)
     public boolean uploadProject(@PathVariable("id_proj") int id_proj, @RequestParam("files") MultipartFile uploadingFile) {
 

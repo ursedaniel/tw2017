@@ -15,7 +15,6 @@ public class UserConvertor {
 
         userVO.setId(user.getId());
         userVO.setName(user.getName());
-        userVO.setEmail(user.getEmail());
         userVO.setRole(user.getRole());
 
         return userVO;
@@ -26,7 +25,6 @@ public class UserConvertor {
 
         user.setId(userVO.getId());
         user.setName(userVO.getName());
-        user.setEmail(userVO.getEmail());
         user.setRole(userVO.getRole());
 
         return user;

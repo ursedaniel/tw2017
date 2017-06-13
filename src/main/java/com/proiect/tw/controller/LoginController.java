@@ -17,6 +17,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    //POST THE LOGGED IN USER
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void createUser(@RequestBody UserVO userVO) {
 

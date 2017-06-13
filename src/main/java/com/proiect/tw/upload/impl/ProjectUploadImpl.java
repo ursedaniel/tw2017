@@ -26,7 +26,7 @@ public class ProjectUploadImpl implements ProjectUpload {
         ProjectVO projectVO = projectService.getProject(id_proj);
 
         if (projectVO != null){
-            String newFileName = "Project_" + projectVO.getTitle()+ "_" + id_proj + ".zip";
+            String newFileName = "file:///D:/projects/" + projectVO.getTitle() + id_proj + ".zip";
 
             projectVO.setFile(newFileName);
             projectService.updateProject(id_proj, projectVO);
