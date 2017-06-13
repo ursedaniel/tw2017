@@ -15,8 +15,14 @@
                 <thead>
                 <tr>
                   <th colspan="11">
-                    Filtru dupa nume:
-                    <input #nameFilter class="form-control"/>
+                    <div class="col-lg-6">
+                      Filtru dupa nume:
+                      <input class="form-control" #nameFilter/>
+                    </div>
+                    <div class="col-lg-6">
+                      Filtru dupa rating:
+                      <input class="form-control" #ratingFilter/>
+                    </div>
                   </th>
                 </tr>
                 </thead>
@@ -39,6 +45,13 @@
                   </div>
                 </a>
               </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <lp-pagination [pager]="pager" (pageChanged)="handlePageChanged($event)"></lp-pagination>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

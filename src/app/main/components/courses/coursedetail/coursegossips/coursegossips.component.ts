@@ -1,6 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Gossip} from "../../../../interfaces/Gossip";
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {CoursesService} from "../../../../services/courses.service";
+import {AddcoursegossipComponent} from "./addcoursegossip/addcoursegossip.component";
 
 @Component({
   selector: 'acar-coursegossips',
@@ -10,6 +10,8 @@ import {CoursesService} from "../../../../services/courses.service";
 export class CoursegossipsComponent implements OnInit {
 
   @Input() courseId: any;
+  @ViewChild(AddcoursegossipComponent)
+  modalGossip: AddcoursegossipComponent;
 
   gossips: any;
 
@@ -25,6 +27,13 @@ export class CoursegossipsComponent implements OnInit {
         this.gossips = response.content;
       }
     )
+  }
+
+  handleAdd(confirmation) {
+    if(confirmation)
+    {
+      this.getGossips();
+    }
   }
 
 }

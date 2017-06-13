@@ -1,7 +1,7 @@
 <nav class="navbar-default navbar-static-side">
     <div>
         <ul class="nav full-height navbar" >
-            <acar-header></acar-header>
+            <acar-header [user]="user"></acar-header>
             <li routerLinkActive="active">
                 <a routerLink="/home"><i class="fa fa-home"></i> <span class="nav-label">Acasa</span></a>
             </li>
@@ -24,6 +24,10 @@
           <li routerLinkActive="active">
             <a routerLink="/documents"><i class="fa fa-file-text"></i> <span
               class="nav-label">Documente</span></a>
+          </li>
+          <li routerLinkActive="active" (click)="logOut()">
+            <a><i class="fa fa-sign-out"></i> <span
+              class="nav-label">Iesire</span></a>
           </li>
         </ul>
     </div>

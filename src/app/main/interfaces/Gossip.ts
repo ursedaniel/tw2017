@@ -2,15 +2,9 @@
  * Created by Daniel on 4/24/2017.
  */
 export class Gossip {
-  public id: number;
+  public course_id: number;
+  public teacher_id: number;
   public title: string;
-  public date: string;
+  public posting_date: Date;
   public content: string;
-
-  constructor(id,title,date,content) {
-    this.id = id;
-    this.title = title;
-    this.date = date;
-    this.content = content;
-  }
 }

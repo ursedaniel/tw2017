@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Headers, URLSearchParams, Http, Response} from "@angular/http";
+import {Headers, URLSearchParams, Http, Response, RequestOptions} from "@angular/http";
 import {JsonObject} from "../interfaces/JsonObject";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
@@ -9,32 +9,31 @@ import {SearchParams} from "../interfaces/SearchParams";
  */
 
 @Injectable()
-export class TeachersService {
+export class GossipsService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private search: URLSearchParams;
 
-  private urlTeacher = "/api/teachers/";
-  private urlSearch = "/api/teachers/search?sort=id,asc";
+  private urlSearch = "/api/gossips/search?sort=id,asc";
+  private urlGossips = "/api/gossips";
 
   constructor(private http: Http) {
     this.http = http;
   }
 
-  getTeachers(searchParamas:SearchParams): Observable<JsonObject> {
+  getGossips(searchParamas:SearchParams): Observable<JsonObject> {
     this.setSearch(searchParamas);
-    return this.http.get(this.urlTeacher,{search: this.search}).map((response: Response) => <JsonObject>response.json());
+    return this.http.get(this.urlGossips,{search:this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
-  getFilteredTeachers(searchParamas:SearchParams): Observable<JsonObject> {
+  getFilteredGossips(searchParamas:SearchParams): Observable<JsonObject> {
     this.setSearch(searchParamas);
-    return this.http.get(this.urlSearch,{search: this.search}).map((response: Response) => <JsonObject>response.json());
+    return this.http.get(this.urlSearch,{search:this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
-  getTeacher(id): Observable<any> {
-    return this.http.get(this.urlTeacher + id)
-      .map((response: Response) => response.json());
+  addGossip(postObject) : Observable<any> {
+    return this.http.post(this.urlGossips,JSON.stringify(postObject),  new RequestOptions({headers: this.headers}))
+      .map((response: Response) => response);
   }
-
 
   private setSearch(searchParamas:SearchParams):void{
     this.search = new URLSearchParams();
@@ -48,4 +47,5 @@ export class TeachersService {
       }
     }
   }
+
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {User} from "../../../main/interfaces/User";
 
 @Component({
   selector: 'acar-sidebar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  @Output() pageChanged = new EventEmitter();
+  @Input() public user : User;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  logOut() {
+    this.pageChanged.emit(true);
   }
 
 }

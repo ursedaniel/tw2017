@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {UsersService} from "./main/services/users.service";
+import {User} from "./main/interfaces/User";
 
 @Component({
   selector: 'acar-root',
@@ -6,10 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  logged = false;
+  logged = 'false';
+  user: User = new User();
 
-  loggedIn() {
-    this.logged = true;
-    console.log("logat");
+  constructor(private usersService: UsersService) {
+  };
+
+  ngOnInit() {
+    console.log(this.logged);
+  }
+
+  loggedIn(user) {
+    this.user = user;
+    this.logged = localStorage.getItem("logged");
+    // console.log(user);
+  }
+
+  loggedOut(confirmation) {
+    if (confirmation) {
+      this.logged = 'false';
+    }
   }
 }

@@ -1,8 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend, RequestOptions} from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
+import { InterceptorService } from 'ng2-interceptors';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './main/components/login/login.component';
@@ -33,6 +34,10 @@ import {PaginationComponent} from "./common/components/pagination/pagination.com
 import {BooksService} from "./main/services/books.service";
 import {ProjectsService} from "./main/services/projects.service";
 import {DocsService} from "./main/services/docs.service";
+import { AddcoursegossipComponent } from './main/components/courses/coursedetail/coursegossips/addcoursegossip/addcoursegossip.component';
+import {GossipsService} from "./main/services/gossips.service";
+import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
+import {UsersService} from "./main/services/users.service";
 
 @NgModule({
   declarations: [
@@ -59,9 +64,11 @@ import {DocsService} from "./main/services/docs.service";
     AllprojectsComponent,
     AlldocumentsComponent,
     NavbarComponent,
-    PaginationComponent
+    PaginationComponent,
+    AddcoursegossipComponent
   ],
   imports: [
+    Ng2Bs3ModalModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -73,7 +80,9 @@ import {DocsService} from "./main/services/docs.service";
     TeachersService,
     BooksService,
     ProjectsService,
-    DocsService
+    DocsService,
+    GossipsService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 <div class="row ">
   <div class="col-sm-8">
-    <button type="button" class="btn btn-primary" style="margin-top:20px;" (click)="modalMember.open()">
+    <button type="button" class="btn btn-primary" style="margin-top:20px;" (click)="modalGossip.open(courseId)">
       Adauga o barfa
     </button>
   </div>
@@ -14,3 +14,4 @@
     <hr>
   </div>
 </div>
+<acar-addcoursegossip (pageChanged)="handleAdd($event)"></acar-addcoursegossip>

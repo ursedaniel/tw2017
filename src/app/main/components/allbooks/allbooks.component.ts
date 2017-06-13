@@ -67,6 +67,8 @@ export class AllbooksComponent implements OnInit {
     this.booksService.getFilteredBooks(this.searchParamas).subscribe(
       (response) => {
         this.books = response.content;
+        this.pager.totalPages = response.totalPages;
+        this.pager.totalElements = response.totalElements;
       }
     );
   }

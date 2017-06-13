@@ -1,0 +1,20 @@
+<modal>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">Adaugare barfa</h4>
+  </modal-header>
+  <modal-body>
+    <div style="height:240px;">
+      <div class="col-sm-12">
+        Titlu
+        <input type="text" class="form-control" [(ngModel)]="gossip.title" *ngIf="!err && !errorlength">
+      </div>
+      <div class="col-sm-12">
+        Continut
+        <textarea class="form-control" [(ngModel)]="gossip.content" *ngIf="!err"></textarea>
+      </div>
+    </div>
+  </modal-body>
+  <modal-footer>
+    <button type="button" class="btn btn-primary" (click)="addGossip()">Salveaza</button>
+  </modal-footer>
+</modal>
