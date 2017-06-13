@@ -14,19 +14,17 @@ public class Teacher {
     String name;
     Integer course_id;
     Integer rating;
-    Integer total_votes;
     String title;
     String email;
     String website;
 
     public Teacher() {}
 
-    public Teacher(Integer id, String name, Integer course_id, Integer rating, Integer total_votes, String title, String email, String website) {
+    public Teacher(Integer id, String name, Integer course_id, Integer rating, String title, String email, String website) {
         this.id = id;
         this.name = name;
         this.course_id = course_id;
         this.rating = rating;
-        this.total_votes = total_votes;
         this.title = title;
         this.email = email;
         this.website = website;
@@ -64,14 +62,6 @@ public class Teacher {
     }
     public void setRating(Integer rating) {
         this.rating = rating;
-    }
-
-    @Column(name = "TOTAL_VOTES")
-    public Integer getTotal_votes() {
-        return total_votes;
-    }
-    public void setTotal_votes(Integer total_votes) {
-        this.total_votes = total_votes;
     }
 
     @Column(name = "TITLE")

@@ -12,19 +12,17 @@ public class TeacherVO {
     String name;
     Integer course_id;
     Integer rating;
-    Integer total_votes;
     String title;
     String email;
     String website;
 
     public TeacherVO() {}
 
-    public TeacherVO(Integer id, String name, Integer course_id, Integer rating, Integer total_votes, String title, String email, String website) {
+    public TeacherVO(Integer id, String name, Integer course_id, Integer rating, String title, String email, String website) {
         this.id = id;
         this.name = name;
         this.course_id = course_id;
         this.rating = rating;
-        this.total_votes = total_votes;
         this.title = title;
         this.email = email;
         this.website = website;
@@ -60,14 +58,6 @@ public class TeacherVO {
 
     public void setRating(Integer rating) {
         this.rating = rating;
-    }
-
-    public Integer getTotal_votes() {
-        return total_votes;
-    }
-
-    public void setTotal_votes(Integer total_votes) {
-        this.total_votes = total_votes;
     }
 
     public String getTitle() {

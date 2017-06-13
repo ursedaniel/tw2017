@@ -18,7 +18,6 @@ public class TeacherConvertor {
         teacherVO.setCourse_id(teacher.getCourse_id());
         teacherVO.setEmail(teacher.getEmail());
         teacherVO.setRating(teacher.getRating());
-        teacherVO.setTotal_votes(teacher.getTotal_votes());
         teacherVO.setWebsite(teacher.getWebsite());
         teacherVO.setTitle(teacher.getTitle());
 
@@ -33,7 +32,6 @@ public class TeacherConvertor {
         teacher.setCourse_id(teacherVO.getCourse_id());
         teacher.setEmail(teacherVO.getEmail());
         teacher.setRating(teacherVO.getRating());
-        teacher.setTotal_votes(teacherVO.getTotal_votes());
         teacher.setWebsite(teacherVO.getWebsite());
         teacher.setTitle(teacherVO.getTitle());
 
