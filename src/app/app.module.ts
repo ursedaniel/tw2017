@@ -38,6 +38,9 @@ import { AddcoursegossipComponent } from './main/components/courses/coursedetail
 import {GossipsService} from "./main/services/gossips.service";
 import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
 import {UsersService} from "./main/services/users.service";
+import { ScheduleComponent } from './main/components/schedule/schedule.component';
+import {ScheduleService} from "./main/services/schedule.service";
+import { AddteachergossipComponent } from './main/components/teachers/teacherdetail/teachergossips/addteachergossip/addteachergossip.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,9 @@ import {UsersService} from "./main/services/users.service";
     AlldocumentsComponent,
     NavbarComponent,
     PaginationComponent,
-    AddcoursegossipComponent
+    AddcoursegossipComponent,
+    ScheduleComponent,
+    AddteachergossipComponent
   ],
   imports: [
     Ng2Bs3ModalModule,
@@ -82,7 +87,8 @@ import {UsersService} from "./main/services/users.service";
     ProjectsService,
     DocsService,
     GossipsService,
-    UsersService
+    UsersService,
+    ScheduleService
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,6 @@ export class Gossip {
   public course_id: number;
   public teacher_id: number;
   public title: string;
-  public posting_date: Date;
+  public posting_date: string;
   public content: string;
 }

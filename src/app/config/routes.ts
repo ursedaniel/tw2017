@@ -11,6 +11,7 @@ import {AllbooksComponent} from "../main/components/allbooks/allbooks.component"
 import {TeacherdetailComponent} from "../main/components/teachers/teacherdetail/teacherdetail.component";
 import {AllprojectsComponent} from "../main/components/allprojects/allprojects.component";
 import {AlldocumentsComponent} from "../main/components/alldocuments/alldocuments.component";
+import {ScheduleComponent} from "../main/components/schedule/schedule.component";
 
 export const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -19,6 +20,7 @@ export const routes: Routes = [
   {path: 'teachers', component: TeachersComponent},
   {path: 'teachers/:id', component: TeacherdetailComponent},
   {path: 'books', component: AllbooksComponent},
+  {path: 'schedule', component: ScheduleComponent},
   {path: 'projects', component: AllprojectsComponent},
   {path: 'documents', component: AlldocumentsComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},

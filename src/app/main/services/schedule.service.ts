@@ -9,42 +9,27 @@ import {SearchParams} from "../interfaces/SearchParams";
  */
 
 @Injectable()
-export class TeachersService {
+export class ScheduleService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private search: URLSearchParams;
 
-  private urlTeacher = "/api/teachers/";
-  private urlSearch = "/api/teachers/search?sort=id,asc";
-  private urlRating = "/ranking";
-  private urlGossips = "/gossips";
+  private urlSchedule = "/api/schedule/";
+  private urlSearch = "/api/schedule/search?sort=id,asc";
 
   constructor(private http: Http) {
     this.http = http;
   }
 
-  getTeachers(searchParamas:SearchParams): Observable<JsonObject> {
+  getSchedule(searchParamas:SearchParams): Observable<JsonObject> {
     this.setSearch(searchParamas);
-    return this.http.get(this.urlTeacher,{search: this.search}).map((response: Response) => <JsonObject>response.json());
+    return this.http.get(this.urlSchedule,{search: this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
-  getFilteredTeachers(searchParamas:SearchParams): Observable<JsonObject> {
+  getFilteredSchedule(searchParamas:SearchParams): Observable<JsonObject> {
     this.setSearch(searchParamas);
     return this.http.get(this.urlSearch,{search: this.search}).map((response: Response) => <JsonObject>response.json());
   }
 
-  getTeacher(id): Observable<any> {
-    return this.http.get(this.urlTeacher + id)
-      .map((response: Response) => response.json());
-  }
-
-  addTeacher(teacherId,postObject) : Observable<any> {
-    return this.http.post(this.urlTeacher + teacherId + this.urlRating,JSON.stringify(postObject),  new RequestOptions({headers: this.headers}))
-      .map((response: Response) => response);
-  }
-
-  getGossips(teacherId): Observable<JsonObject> {
-    return this.http.get(this.urlTeacher + teacherId + this.urlGossips).map((response: Response) => <JsonObject>response.json());
-  }
 
   private setSearch(searchParamas:SearchParams):void{
     this.search = new URLSearchParams();

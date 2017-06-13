@@ -4,11 +4,12 @@ import {Gossip} from "../../../../../interfaces/Gossip";
 import {GossipsService} from "../../../../../services/gossips.service";
 
 @Component({
-  selector: 'acar-addcoursegossip',
-  templateUrl: './addcoursegossip.component.html',
-  styleUrls: ['./addcoursegossip.component.css']
+  selector: 'acar-addteachergossip',
+  templateUrl: './addteachergossip.component.html',
+  styleUrls: ['./addteachergossip.component.css']
 })
-export class AddcoursegossipComponent implements OnInit {
+export class AddteachergossipComponent implements OnInit {
+
 
   @ViewChild(ModalComponent)
   modalGossip: ModalComponent;
@@ -23,8 +24,8 @@ export class AddcoursegossipComponent implements OnInit {
   }
 
 
-  open(courseId) {
-    this.gossip.course_id = courseId;
+  open(teacherId) {
+    this.gossip.teacher_id = teacherId;
     this.err = false;
     this.modalGossip.open();
   }
