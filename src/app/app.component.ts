@@ -20,6 +20,7 @@ export class AppComponent {
 
   loggedIn(user) {
     this.user = user;
+    localStorage.setItem("userId",this.user.id);
     this.logged = localStorage.getItem("logged");
     // console.log(user);
   }

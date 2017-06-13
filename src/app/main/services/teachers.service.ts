@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Headers, URLSearchParams, Http, Response} from "@angular/http";
+import {Headers, URLSearchParams, Http, Response, RequestOptions} from "@angular/http";
 import {JsonObject} from "../interfaces/JsonObject";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
@@ -15,6 +15,7 @@ export class TeachersService {
 
   private urlTeacher = "/api/teachers/";
   private urlSearch = "/api/teachers/search?sort=id,asc";
+  private urlRating = "/ranking";
 
   constructor(private http: Http) {
     this.http = http;
@@ -33,6 +34,11 @@ export class TeachersService {
   getTeacher(id): Observable<any> {
     return this.http.get(this.urlTeacher + id)
       .map((response: Response) => response.json());
+  }
+
+  addTeacher(teacherId,postObject) : Observable<any> {
+    return this.http.post(this.urlTeacher + teacherId + this.urlRating,JSON.stringify(postObject),  new RequestOptions({headers: this.headers}))
+      .map((response: Response) => response);
   }
 
 

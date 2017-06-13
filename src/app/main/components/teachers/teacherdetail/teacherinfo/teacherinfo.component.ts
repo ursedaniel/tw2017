@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Teacher} from "../../../../interfaces/Teacher";
 import {TeachersService} from "../../../../services/teachers.service";
+import {Rating} from "../../../../interfaces/Rating";
 
 @Component({
   selector: 'acar-teacherinfo',
@@ -10,6 +11,7 @@ import {TeachersService} from "../../../../services/teachers.service";
 export class TeacherinfoComponent implements OnInit {
 
   @Input() private teacherId: any;
+  rating: Rating = new Rating();
 
   teacher: Teacher = new Teacher();
 
@@ -24,6 +26,16 @@ export class TeacherinfoComponent implements OnInit {
       (response) => {
         this.teacher = response;
         console.log(this.teacher);
+      }
+    )
+  }
+
+  addRating() {
+    this.rating.id_user = localStorage.getItem("userId");
+    this.rating.teacher_id = this.teacherId;
+    this.teachersService.addTeacher(this.teacherId,this.rating).subscribe(
+      (succes) => {
+        this.getTeacher(this.teacherId);
       }
     )
   }

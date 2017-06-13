@@ -15,15 +15,8 @@
         <strong>No. Rated:</strong> {{teacher.total_votes}} <br/><br/>
 
         <strong>Acorda rating:</strong>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
-        <i class="fa fa-star yellow-star"></i>
+        <input type="text" [(ngModel)]="rating.grade" placeholder="minim 1 - maxim 10">
+        <button type="button" class="btn btn-primary" (click)="addRating()">Salveaza</button>
       </span>
     </div>
   </div>
